@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Morabaraba_9001.GameCode.Actions
 {
-    class ActionMove : IAction
+    public class ActionMove : IAction
     {
         public void PlayAction(Game game)
         {
