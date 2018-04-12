@@ -7,6 +7,7 @@ namespace Morabaraba_9001.GameCode
     public class Player
     {
         List<BoardPos> MyCowsPos = new List<BoardPos>();
+    //Place cow
 
         public void AddCow(BoardPos pos)
         {

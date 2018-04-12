@@ -14,4 +14,19 @@ namespace Morabaraba_9001.GameCode
                 f2,            f4,                  f6,
         g1,                    g4,                          g7
     }
+
+    public static class BoardWorker
+    {
+        public static BoardPos StringToBoardPos(string s)
+        {
+            switch (s)
+            {
+                case "a1": return BoardPos.a1;
+                case "a4": return BoardPos.a4;
+                case "a7": return BoardPos.a7;
+            }
+
+            throw new Exception("Oops that wasnt a board pos");
+        }
+    }
 }

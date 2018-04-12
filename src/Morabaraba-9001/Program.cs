@@ -16,7 +16,7 @@ namespace Morabaraba_9001
                 game.Draw();
                 game.Update();
             }
-
+            
             game.EndGameMessage();
 
             System.Console.ReadLine();
