@@ -33,6 +33,8 @@ namespace Morabaraba_9001.GameCode
                         try
                         {
                             acceptMePls = BoardWorker.StringToBoardPos(userGives);
+                            if (game.board.ContainsKey(acceptMePls))
+                                failureTest = true;
                         }
                         catch (Exception e)
                         {
@@ -48,6 +50,8 @@ namespace Morabaraba_9001.GameCode
                             try
                             {
                                 acceptMePls = BoardWorker.StringToBoardPos(thenUserGives);
+                                if (game.board.ContainsKey(acceptMePls))
+                                    failureTest = true;
                             }
                             catch (Exception e)
                             {
