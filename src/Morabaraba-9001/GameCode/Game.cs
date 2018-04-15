@@ -91,11 +91,47 @@ namespace Morabaraba_9001.GameCode
         public void Draw()
         {
             // write console
+            Console.WriteLine("    ---~~~===~~~---\n" + // Line between turns currently
+                              "\t  \t1,2,3    4    5,6,7\n" +
+                              "\t[A]\t{0}........{1}........{2}\n" +
+                              "\t   \t|\\       |       /|\n" +
+                              "\t[B]\t| {3}......{4}......{5} |\n" +
+                              "\t   \t| |\\     |     /| |\n" +
+                              "\t[C]\t| | {6}....{7}....{8} | |\n" +
+                              "\t   \t| | |         | | |\n" +
+                              "\t[D]\t{9}.{10}.{11}         {12}.{13}.{14}\n" +
+                              "\t   \t| | |         | | | \n" +
+                              "\t[E]\t| | {15}....{16}....{17} | |\n" +
+                              "\t   \t| |/     |     \\| |\n" +
+                              "\t[F]\t| {18}......{19}......{20} |\n" +
+                              "\t   \t|/       |       \\|\n" +
+                              "\t[G]\t{21}........{22}........{23}\n\n",
+                              GetBoardToken(BoardPos.a1).ToString(), GetBoardToken(BoardPos.a4).ToString(), GetBoardToken(BoardPos.a7).ToString(),
+                              GetBoardToken(BoardPos.b2).ToString(), GetBoardToken(BoardPos.b4).ToString(), GetBoardToken(BoardPos.b6).ToString(),
+                              GetBoardToken(BoardPos.c3).ToString(), GetBoardToken(BoardPos.c4).ToString(), GetBoardToken(BoardPos.c5).ToString(),
+                              GetBoardToken(BoardPos.d1).ToString(), GetBoardToken(BoardPos.d2).ToString(), GetBoardToken(BoardPos.d3).ToString(),
+                              /* continued previous row */ GetBoardToken(BoardPos.d5).ToString(), GetBoardToken(BoardPos.d6).ToString(), GetBoardToken(BoardPos.d7).ToString(),
+                              GetBoardToken(BoardPos.e3).ToString(), GetBoardToken(BoardPos.e4).ToString(), GetBoardToken(BoardPos.e5).ToString(),
+                              GetBoardToken(BoardPos.f2).ToString(), GetBoardToken(BoardPos.f4).ToString(), GetBoardToken(BoardPos.f6).ToString(),
+                              GetBoardToken(BoardPos.g1).ToString(), GetBoardToken(BoardPos.g4).ToString(), GetBoardToken(BoardPos.g7).ToString()
+                              );
+
+        }
+
+        private string GetBoardToken(BoardPos at_pos)
+        {
+            if (board.ContainsKey(at_pos))
+            {
+                var cow = board[at_pos];
+                return cow.Owner.ToString()[0].ToString();
+            }
+
+            return " ";
         }
 
         public bool IsThereAMillAt(BoardPos b)
         {
-            return true;
+            return false;
         }
     }
 }
