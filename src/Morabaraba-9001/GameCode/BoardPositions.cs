@@ -114,5 +114,14 @@ namespace Morabaraba_9001.GameCode
 
             throw new Exception("Oops that wasnt a board pos");
         }
-    }
+        public  bool IsThereAMillAt(BoardPos p)
+            {
+            List<BoardPos[]> Mills = new List<BoardPos[]>();
+            Mills = [[ BoardPos.a1, BoardPos.a4, BoardPos.a7],[BoardPos.b2, BoardPos.b4, BoardPos.b6],[BoardPos.c3, BoardPos.c4, BoardPos.c5],[BoardPos.d1, BoardPos.d2, BoardPos.d3],[BoardPos.d5, BoardPos.d6, BoardPos.d7],[BoardPos.e3, BoardPos.e4, BoardPos.e4],[BoardPos.f2, BoardPos.f4, BoardPos.f6],[BoardPos.g1, BoardPos.g4, BoardPos.g7],
+                [BoardPos.a1, BoardPos.d1, BoardPos.g1],[BoardPos.b2, BoardPos.d2, BoardPos.f2],[BoardPos.c3, BoardPos.d3, BoardPos.e3],[BoardPos.a4, BoardPos.b4, BoardPos.c4],[BoardPos.e4, BoardPos.f4, BoardPos.g4],[BoardPos.c5, BoardPos.d5, BoardPos.e5],[BoardPos.b6, BoardPos.d6, BoardPos.f6],[BoardPos.a7, BoardPos.d7, BoardPos.g7],
+                [BoardPos.a1, BoardPos.b2, BoardPos.c3],[BoardPos.a7, BoardPos.b6, BoardPos.c5],[BoardPos.e5, BoardPos.f6, BoardPos.g7],[BoardPos.e3, BoardPos.f2, BoardPos.g1]];
+            //Mill List above
+
+            //Checking these mills based on input needs to be finished
+            }
 }
