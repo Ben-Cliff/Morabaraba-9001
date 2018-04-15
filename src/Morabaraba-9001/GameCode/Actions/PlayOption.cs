@@ -4,9 +4,11 @@ using System.Text;
 
 namespace Morabaraba_9001.GameCode.Actions
 {
-    public interface IAction
+    public enum PlayOption
     {
-        // Return if the next action should be called
-        PlayOption PlayAction(Game game);
+        None,
+        Shoot,
+        Place,
+        Move
     }
 }

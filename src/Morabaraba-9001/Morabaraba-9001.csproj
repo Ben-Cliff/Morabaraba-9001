@@ -47,9 +47,12 @@
     <Compile Include="GameCode\Actions\ActionPlace.cs" />
     <Compile Include="GameCode\Actions\ActionShoot.cs" />
     <Compile Include="GameCode\Actions\IAction.cs" />
+    <Compile Include="GameCode\Actions\PlayOption.cs" />
     <Compile Include="GameCode\BoardPositions.cs" />
     <Compile Include="GameCode\Cow.cs" />
     <Compile Include="GameCode\Game.cs" />
+    <Compile Include="GameCode\GameInput.cs" />
+    <Compile Include="GameCode\OneAway.cs" />
     <Compile Include="GameCode\Player.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

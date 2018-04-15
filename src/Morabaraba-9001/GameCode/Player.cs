@@ -6,8 +6,23 @@ namespace Morabaraba_9001.GameCode
 {
     public class Player
     {
+        public enum Type
+        {
+            Red,
+            Blue
+        }
+
+        // This is weird just for the naming, etc
+        private Player.Type _type;
+        public Player.Type MyType { get { return _type; } }
+
+        public Player(Player.Type t)
+        {
+            _type = t;
+        }
+
         List<BoardPos> MyCowsPos = new List<BoardPos>();
-    //Place cow
+        //Place cow
 
         public void AddCow(BoardPos pos)
         {

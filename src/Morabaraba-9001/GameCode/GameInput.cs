@@ -22,7 +22,7 @@ namespace Morabaraba_9001.GameCode
                         var availableOpts = new List<BoardPos>();
                         foreach (BoardPos bp in Enum.GetValues(typeof(BoardPos)))
                         {
-                            if (game.board[bp] != null)
+                            if (game.board.ContainsKey(bp))
                                 availableOpts.Add(bp);
                         }
 
@@ -47,7 +47,7 @@ namespace Morabaraba_9001.GameCode
                             var thenUserGives = Console.ReadLine();
                             try
                             {
-                                acceptMePls = BoardWorker.StringToBoardPos(userGives);
+                                acceptMePls = BoardWorker.StringToBoardPos(thenUserGives);
                             }
                             catch (Exception e)
                             {
