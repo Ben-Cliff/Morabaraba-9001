@@ -17,32 +17,19 @@ namespace Morabaraba_9001.GameCode
         // We only look for the player after picking current player
         public Player OpponentPlayer { get { return Players[0]; } }
 
-        private ActionPlace _action_place;
-        public ActionPlace ActionPlace
+        private Dictionary<AvailableActions, IAction> _usable_actions = new Dictionary<AvailableActions, IAction>()
         {
-            get
-            {
-                if (_action_place == null)
-                {
-                    _action_place = new ActionPlace();
-                }
-
-                return _action_place;
-            }
-        }
-
-        private ActionShoot _action_shoot;
-        public ActionShoot ActionShoot
+            { AvailableActions.Place, new ActionPlace() },
+            { AvailableActions.Shoot, new ActionShoot() }
+        };
+        public IAction GetAction(AvailableActions act)
         {
-            get
+            if (_usable_actions.ContainsKey(act))
             {
-                if (_action_shoot == null)
-                {
-                    _action_shoot = new ActionShoot();
-                }
-
-                return _action_shoot;
+                return _usable_actions[act];
             }
+
+            throw new Exception("We do not have that action currently: " + act.ToString());
         }
 
         // intances of
@@ -68,13 +55,13 @@ namespace Morabaraba_9001.GameCode
 
             //           # place
             if (true) // TODO: move_possibilities
-                answer = ActionPlace.PlayAction(this);
+                answer = GetAction(AvailableActions.Place).PlayAction(this);
             //           # move
 
             // Check if anything else needs to run
             switch (answer)
             {
-                case PlayOption.Shoot: ActionShoot.PlayAction(this); break;
+                case PlayOption.Shoot: GetAction(AvailableActions.Shoot).PlayAction(this); break;
             }
 
             //           # win check
