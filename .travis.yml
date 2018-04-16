@@ -1,2 +1,2 @@
 language: csharp
-solution: Morabaraba-9001.sln
+solution: src/Morabaraba-9001/Morabaraba-9001.sln
