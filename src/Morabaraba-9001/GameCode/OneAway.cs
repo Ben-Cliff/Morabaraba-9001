@@ -57,8 +57,7 @@ namespace Morabaraba_9001.GameCode
 
 
 
-
-
+     
 
 
                     //TO BE COMPLETED
@@ -67,6 +66,16 @@ namespace Morabaraba_9001.GameCode
 
             }
         }
+
+        /* 
+         
+            static funct
+                -> input: where its looking for
+                -> for (int i = 0; i < _opciones.Count; i++)
+                        if (_opciones[i].Spot == input_spot)
+                            here
+                            return;
+             */
 
         public BoardPos Bigme { get; private set; }
         public List<BoardPos> Spot { get; private set; }

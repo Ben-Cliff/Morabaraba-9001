@@ -16,6 +16,16 @@ namespace Morabaraba_9001.GameCode.Actions
                 return PlayOption.Shoot;
             }
 
+            //BEN: 
+            //  -> current player: game.CurrentPlayer
+            //  -> then we also have the opponent: game.OpponentPlayer
+            //  Both of them have
+            //    -> their name/type
+            //    -> current list of cows
+            //  Cows belonging to player
+            //    -> Player (current or opponent above) .MyCowsPos -> positions I have cows
+            //         OR
+            //    -> search through game.board -> looking at Cow.Owner == Player.Type.<which ever options>
             return PlayOption.None;
         }
     }
