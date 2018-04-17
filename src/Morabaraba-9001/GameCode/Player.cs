@@ -32,9 +32,11 @@ namespace Morabaraba_9001.GameCode
             {
                 throw new Exception("There were no cows left I could place.");
             }
-
-            MyCowsPos.Add(where_placed);
-            CowsLeftToPlace -= 1;
+            else
+            {
+                MyCowsPos.Add(where_placed);
+                CowsLeftToPlace -= 1;
+            }
         }
 
         public void AddCow(BoardPos pos)
