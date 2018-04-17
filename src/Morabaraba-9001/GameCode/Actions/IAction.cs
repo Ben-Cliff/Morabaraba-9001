@@ -7,7 +7,8 @@ namespace Morabaraba_9001.GameCode.Actions
     public enum AvailableActions
     {
         Place,
-        Shoot
+        Shoot,
+        Move
     }
 
     public interface IAction

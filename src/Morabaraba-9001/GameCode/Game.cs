@@ -35,7 +35,8 @@ namespace Morabaraba_9001.GameCode
         private Dictionary<AvailableActions, IAction> _usable_actions = new Dictionary<AvailableActions, IAction>()
         {
             { AvailableActions.Place, new ActionPlace() },
-            { AvailableActions.Shoot, new ActionShoot() }
+            { AvailableActions.Shoot, new ActionShoot() },
+            { AvailableActions.Move, new ActionMove() }
         };
         public IAction GetAction(AvailableActions act)
         {
@@ -57,7 +58,6 @@ namespace Morabaraba_9001.GameCode
             Players.RemoveAt(0);
             
             //           # move_posibilities check
-
             //           # place
             if (_player_used.CowsLeftToPlace > 0)
             {
@@ -65,12 +65,10 @@ namespace Morabaraba_9001.GameCode
             }
             else // this assumes when no cows left to place we go to move
             {
-                Console.WriteLine("\t\tThis is a temporary message, we can't do this action yet. This gets stuck in an infinite loop without blank input.");
-                Console.ReadLine();
-                //answer = ActionMove.PlayAction(this);
+                //           # move
+                GetAction(AvailableActions.Move).PlayAction(this);
             }
-            //           # move
-
+            
             //           # win check
 
             // End of payer turn swap
