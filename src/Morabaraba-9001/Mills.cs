@@ -62,5 +62,18 @@ namespace Morabaraba_9001
             }
 
         }
+
+        public static List<Mill> GetMillsFor(BoardPos b)
+        {
+            List<Mill> mills = new List<Mill>();
+
+            foreach (var mill in GetAll)
+            {
+                if (mill.DoIContain(b))
+                    mills.Add(mill);
+            }
+
+            return mills;
+        }
     }
 }
