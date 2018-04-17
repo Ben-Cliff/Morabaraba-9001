@@ -17,7 +17,10 @@ namespace Morabaraba_9001.GameCode.Actions
             //              # else
             GameCode.BoardPos frm = GameInput.GetBoardPosition(game, WhichPickingOption.ExpectingAllyCow, "Enter the co ordinate of the cow you would like to move", "You do not have any cows in that position. Try Again");
             GameCode.BoardPos to = GameInput.GetBoardPosition(game, WhichPickingOption.ExpectingAllyCow, "Enter the co ordinate you would like to move your cow to", "You can only move to empty spots, one unit away. Try Again");      // get choice of possibility - to
-            //                  # move there
+
+            game.CurrentPlayer.RemoveACow(to);
+            game.CurrentPlayer.AddCow(to);    // move there
+
             //                  # check
             //                      # shoot
             throw new NotImplementedException();

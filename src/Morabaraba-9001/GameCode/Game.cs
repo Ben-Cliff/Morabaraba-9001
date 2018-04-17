@@ -27,10 +27,18 @@ namespace Morabaraba_9001.GameCode
             }
         }
 
+       
+
+
+            ////////////////////////////////////////--------------------------------------------------------------------------------------------------------///////////////////////////////////////////////
+
+    
         private Player _player_used;
         public Player CurrentPlayer { get { return _player_used; } }
         // We only look for the player after picking current player
+
         public Player OpponentPlayer { get { return Players[0]; } }
+
 
         private Dictionary<AvailableActions, IAction> _usable_actions = new Dictionary<AvailableActions, IAction>()
         {
@@ -76,6 +84,8 @@ namespace Morabaraba_9001.GameCode
             Players.Add(_player_used);
         }
 
+
+        ////////////////////////////////////////--------------------------------------------------------------------------------------------------------///////////////////////////////////////////////
         internal void EndGameMessage()
         {
             throw new NotImplementedException();
