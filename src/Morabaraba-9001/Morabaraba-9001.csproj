@@ -47,6 +47,7 @@
     <Compile Include="GameCode\Cow.cs" />
     <Compile Include="GameCode\Game.cs" />
     <Compile Include="GameCode\GameInput.cs" />
+    <Compile Include="GameCode\Mill.cs" />
     <Compile Include="GameCode\OneAway.cs" />
     <Compile Include="GameCode\Player.cs" />
     <Compile Include="Program.cs" />

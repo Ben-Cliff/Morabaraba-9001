@@ -27,9 +27,19 @@ namespace Morabaraba_9001.GameCode
         public bool IsFilled(Game game)
         {
             // This is just assuming that we only use this on a position that is filled
-            var a = game.board[A];
-            var b = game.board[B];
-            var c = game.board[C];
+            Cow a = null, b = null, c = null;
+            if (game.board.ContainsKey(A))
+            {
+                a = game.board[A];
+            }
+            if (game.board.ContainsKey(B))
+            {
+                b = game.board[B];
+            }
+            if (game.board.ContainsKey(C))
+            {
+                c = game.board[C];
+            }
 
             // if any is empty it will be false
             if ((a == null) || (b == null) || (c == null)) return false;

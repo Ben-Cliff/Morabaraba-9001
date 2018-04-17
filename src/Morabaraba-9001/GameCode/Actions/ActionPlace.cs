@@ -15,7 +15,7 @@ namespace Morabaraba_9001.GameCode.Actions
             // So we can store the number of cows placed
             game.CurrentPlayer.CowWasPlaced(user_chose);
 
-            if (game.IsThereAMillAt(user_chose)) 
+            if (Mill.IsThereAMillFor(game, user_chose)) 
             {
                 game.GetAction(AvailableActions.Shoot).PlayAction(game);
             }

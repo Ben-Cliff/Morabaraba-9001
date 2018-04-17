@@ -120,10 +120,5 @@ namespace Morabaraba_9001.GameCode
 
             return " ";
         }
-
-        public bool IsThereAMillAt(BoardPos b)
-        {
-            return false;
-        }
     }
 }
