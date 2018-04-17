@@ -23,8 +23,7 @@ namespace Morabaraba_9001.GameCode
                     Players.Add(new Player(Player.Type.Red, 7));
                     Players.Add(new Player(Player.Type.Blue, 7));
 
-                    Game i = new Game();
-                    i.EndGame.
+                   
                 }
 
                 return _players;

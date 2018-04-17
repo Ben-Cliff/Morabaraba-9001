@@ -66,48 +66,48 @@ namespace Morabaraba_9001.GameCode
             throw new Exception("Oops that wasnt a board pos");
         }
 
-        public static int StringToIntPos(string s)      //Converts string board posiion to int value used in array data structures (OneAway)
+        public static int PosToIntPos(BoardPos s)      //Converts string board posiion to int value used in array data structures (OneAway)
         {
             switch (s)
             {
                 //A
-                case "a1": return 0;
-                case "a4": return 1;
-                case "a7": return 2;
+                case BoardPos.a1: return 0;
+                case BoardPos.a4: return 1;
+                case BoardPos.a7: return 2;
 
                 //B
-                case "b2": return 3;
-                case "b4": return 4;
-                case "b6": return 5;
+                case BoardPos.b2: return 3;
+                case BoardPos.b4: return 4;
+                case BoardPos.b6: return 5;
 
                 //C
-                case "c3": return 6;
-                case "c4": return 7;
-                case "c5": return 8;
+                case BoardPos.c3: return 6;
+                case BoardPos.c4: return 7;
+                case BoardPos.c5: return 8;
 
 
                 //D
-                case "d1": return 9;
-                case "d2": return 10;
-                case "d3": return 11;
-                case "d5": return 12;
-                case "d6": return 13;
-                case "d7": return 14;
+                case BoardPos.d1: return 9;
+                case BoardPos.d2: return 10;
+                case BoardPos.d3: return 11;
+                case BoardPos.d5: return 12;
+                case BoardPos.d6: return 13;
+                case BoardPos.d7: return 14;
 
                 //E
-                case "e3": return 15;
-                case "e4": return 16;
-                case "a5": return 17;
-
+                case BoardPos.e3: return 15;
+                case BoardPos.e4: return 16;
+                case BoardPos.e5: return 17;
+                    
                 //F
-                case "f2": return 18;
-                case "f4": return 19;
-                case "f6": return 20;
-
+                case BoardPos.f2: return 18;
+                case BoardPos.f4: return 19;
+                case BoardPos.f6: return 20;
+                    
                 //G
-                case "g1": return 21;
-                case "g4": return 22;
-                case "g7": return 23;
+                case BoardPos.g1: return 21;
+                case BoardPos.g4: return 22;
+                case BoardPos.g7: return 23;
 
 
             }
