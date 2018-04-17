@@ -36,7 +36,7 @@ namespace Morabaraba_9001.GameCode
                             if (game.board.ContainsKey(acceptMePls))
                                 failureTest = true;
                         }
-                        catch (Exception e)
+                        catch
                         {
                             failureTest = true;
                         }
@@ -53,7 +53,7 @@ namespace Morabaraba_9001.GameCode
                                 if (game.board.ContainsKey(acceptMePls))
                                     failureTest = true;
                             }
-                            catch (Exception e)
+                            catch
                             {
                                 failureTest = true;
                             }

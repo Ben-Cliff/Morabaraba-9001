@@ -13,6 +13,6 @@ namespace Morabaraba_9001.GameCode.Actions
     public interface IAction
     {
         // Return if the next action should be called
-        PlayOption PlayAction(Game game);
+        void PlayAction(Game game);
     }
 }

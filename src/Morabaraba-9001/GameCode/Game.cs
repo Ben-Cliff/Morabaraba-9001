@@ -10,7 +10,22 @@ namespace Morabaraba_9001.GameCode
         public bool EndGame = false;
         public Dictionary<BoardPos, Cow> board = new Dictionary<BoardPos, Cow>();
 
-        public List<Player> Players;
+        private List<Player> _players;
+        public List<Player> Players {
+            get
+            {
+                if (_players == null)
+                {
+                    // if players isnt a list of players in game we need to create the 2 players
+                    _players = new List<Player>();
+
+                    Players.Add(new Player(Player.Type.Red, 7));
+                    Players.Add(new Player(Player.Type.Blue, 7));
+                }
+
+                return _players;
+            }
+        }
 
         private Player _player_used;
         public Player CurrentPlayer { get { return _player_used; } }
@@ -37,26 +52,16 @@ namespace Morabaraba_9001.GameCode
         //    player1, player2
         public void Update()
         {
-            if (Players == null)
-            {
-                Players = new List<Player>();
-                Players.Add(new Player(Player.Type.Red, 7));
-                Players.Add(new Player(Player.Type.Blue, 7));
-            }
-
             //           # turn swap
             _player_used = Players[0];
             Players.RemoveAt(0);
-
-            // Helper for playing actions
-            PlayOption answer = PlayOption.None;
-
+            
             //           # move_posibilities check
 
             //           # place
             if (_player_used.CowsLeftToPlace > 0)
             {
-                answer = GetAction(AvailableActions.Place).PlayAction(this);
+                GetAction(AvailableActions.Place).PlayAction(this);
             }
             else // this assumes when no cows left to place we go to move
             {
@@ -65,12 +70,6 @@ namespace Morabaraba_9001.GameCode
                 //answer = ActionMove.PlayAction(this);
             }
             //           # move
-
-            // Check if anything else needs to run
-            switch (answer)
-            {
-                case PlayOption.Shoot: GetAction(AvailableActions.Shoot).PlayAction(this); break;
-            }
 
             //           # win check
 

@@ -6,7 +6,7 @@ namespace Morabaraba_9001.GameCode.Actions
 {
     public class ActionShoot : IAction
     {
-        public PlayOption PlayAction(Game game)
+        public void PlayAction(Game game)
         {
             // shoot
             throw new NotImplementedException();

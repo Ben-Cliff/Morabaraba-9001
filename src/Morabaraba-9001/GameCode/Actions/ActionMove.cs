@@ -6,7 +6,7 @@ namespace Morabaraba_9001.GameCode.Actions
 {
     public class ActionMove : IAction
     {
-        public PlayOption PlayAction(Game game)
+        public void PlayAction(Game game)
         {
             //              #if 3 cows left: fly
             //                  # pick where from
