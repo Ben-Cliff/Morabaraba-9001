@@ -7,9 +7,9 @@ namespace Morabaraba_9001.GameCode
     public class Mill
     {
         private BoardPos _a, _b, _c;
-        public BoardPos A { get { return _a; } }
-        public BoardPos B { get { return _b; } }
-        public BoardPos C { get { return _c; } }
+        public BoardPos X { get { return _a; } }
+        public BoardPos Y { get { return _b; } }
+        public BoardPos Z { get { return _c; } }
         public Mill(BoardPos a, BoardPos b, BoardPos c)
         {
             _a = a;
@@ -19,7 +19,7 @@ namespace Morabaraba_9001.GameCode
 
         public bool DoIContain(BoardPos a)
         {
-            if ((A == a) || (B == a) || (C == a)) return true;
+            if ((X == a) || (Y == a) || (Z == a)) return true;
 
             return false;
         }
@@ -28,17 +28,17 @@ namespace Morabaraba_9001.GameCode
         {
             // This is just assuming that we only use this on a position that is filled
             Cow a = null, b = null, c = null;
-            if (game.board.ContainsKey(A))
+            if (game.board.ContainsKey(X))
             {
-                a = game.board[A];
+                a = game.board[X];
             }
-            if (game.board.ContainsKey(B))
+            if (game.board.ContainsKey(Y))
             {
-                b = game.board[B];
+                b = game.board[Y];
             }
-            if (game.board.ContainsKey(C))
+            if (game.board.ContainsKey(Z))
             {
-                c = game.board[C];
+                c = game.board[Z];
             }
 
             // if any is empty it will be false

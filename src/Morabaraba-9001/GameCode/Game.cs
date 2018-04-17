@@ -51,6 +51,7 @@ namespace Morabaraba_9001.GameCode
         // intances of
         //    game board
         //    player1, player2
+        // F12 -> go to definition of where code is called
         public void Update()
         {
             //           # turn swap
@@ -71,7 +72,7 @@ namespace Morabaraba_9001.GameCode
             
             //           # win check
 
-            // End of payer turn swap
+            // End of payer turn swap, put player back in behind so we keep it and dont garbage collect it and lose it
             Players.Add(_player_used);
         }
 

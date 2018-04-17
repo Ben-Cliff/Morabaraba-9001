@@ -63,12 +63,14 @@ namespace Morabaraba_9001.GameCode
                     }
                 case WhichPickingOption.ExpectingAllyCow:
                     {
-
-                    } break;
+                        // expecting to encounter case above to move
+                    }
+                    break;
                 case WhichPickingOption.ExpectingEnemyCow:
                     {
-
-                    } break;
+                        // expecting to encounter case above to move
+                    }
+                    break;
             }
 
             throw new Exception("Cases didnt match for get board position.");
