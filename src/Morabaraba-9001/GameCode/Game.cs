@@ -53,8 +53,8 @@ namespace Morabaraba_9001.GameCode
             if (Players == null)
             {
                 Players = new List<Player>();
-                Players.Add(new Player(Player.Type.Red));
-                Players.Add(new Player(Player.Type.Blue));
+                Players.Add(new Player(Player.Type.Red, 7));
+                Players.Add(new Player(Player.Type.Blue, 7));
             }
 
             //           # turn swap

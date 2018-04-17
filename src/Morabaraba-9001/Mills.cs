@@ -92,13 +92,13 @@ namespace Morabaraba_9001
             return mills;
         }
 
-        public static bool IsThereAMillFor(BoardPos b)
+        public static bool IsThereAMillFor(Game game, BoardPos b)
         {
             var all_checks = GetMillsFor(b);
 
             foreach (var mill in GetAll)
             {
-                if (mill.IsFilled)
+                if (mill.IsFilled(game))
                     return true;
             }
 
