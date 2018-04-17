@@ -54,6 +54,7 @@
     <Compile Include="GameCode\GameInput.cs" />
     <Compile Include="GameCode\OneAway.cs" />
     <Compile Include="GameCode\Player.cs" />
+    <Compile Include="Mills.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
