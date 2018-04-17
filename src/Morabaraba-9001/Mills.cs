@@ -25,6 +25,22 @@ namespace Morabaraba_9001
             return false;
         }
 
+        public bool IsFilled(Game game)
+        {
+            // This is just assuming that we only use this on a position that is filled
+            var a = game.board[A];
+            var b = game.board[B];
+            var c = game.board[C];
+
+            // if any is empty it will be false
+            if ((a == null) || (b == null) || (c == null)) return false;
+            // if they are filled we must double check the 3 owners are the same
+            if ((a.Owner != b.Owner) || (b.Owner != c.Owner)) return false;
+
+            // meeting the above conditions there is a mill here
+            return true;
+        }
+
         private static List<Mill> _mills;
         public static List<Mill> GetAll { get
             {
@@ -74,6 +90,19 @@ namespace Morabaraba_9001
             }
 
             return mills;
+        }
+
+        public static bool IsThereAMillFor(BoardPos b)
+        {
+            var all_checks = GetMillsFor(b);
+
+            foreach (var mill in GetAll)
+            {
+                if (mill.IsFilled)
+                    return true;
+            }
+
+            return false;
         }
     }
 }
