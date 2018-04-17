@@ -50,6 +50,16 @@ namespace Morabaraba_9001.GameCode
             MyCowsPos.Add(pos);
         }
 
+        public int HowManyCows()
+        {
+            if (MyCowsPos.Count < 0)
+            {
+                throw new Exception("There is already have a cow there!");
+            }
+
+            return MyCowsPos.Count;
+        }
+
         public bool DoIHaveACowAt(BoardPos pos)
         {
             return MyCowsPos.Contains(pos);
