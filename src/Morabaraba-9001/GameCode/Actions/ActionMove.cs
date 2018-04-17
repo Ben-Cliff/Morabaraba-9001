@@ -28,32 +28,40 @@ namespace Morabaraba_9001.GameCode.Actions
                 else
                     { bool closeEnough = false;
                     OneAway proximity = new OneAway(BoardPos.a1, new List<BoardPos> { BoardPos.a4, BoardPos.b2, BoardPos.d1 });
+
+                
                     while (closeEnough == false)
                         {
-
+                        
                         frmm = GameInput.GetBoardPosition(game, WhichPickingOption.ExpectingAllyCow, "Enter the co ordinate of the cow you would like to move", "You do not have any cows in that position. Try Again");
                         too = GameInput.GetBoardPosition(game, WhichPickingOption.ExpectingEmpty, "Enter the co ordinate you would like to move your cow to", "You can only move to empty spots, one unit away. Try Again");
 
-                       
+                    int intposfrm = BoardWorker.PosToIntPos(frmm);
+                    OneAway h = OneAway.Options[intposfrm];
 
-                        int intposfrm = BoardWorker.PosToIntPos(frmm);
+                    if (h.Spot.Contains(too))  //OneAway.Options[0].Bigme == frmm)
+                    {
+
+
+                        game.CurrentPlayer.RemoveACow(too);
+                        game.CurrentPlayer.AddCow(too);    // updating player's list of cows
+
+                        game.board[frmm] = new Cow(Player.Type.None);
+                        game.board[too] = new Cow(game.CurrentPlayer.MyType);    //updating actual board
+
+                        if (Mill.IsThereAMillFor(game, too))     //A check for a mill formed. Shoots if true
+                        { game.GetAction(AvailableActions.Shoot).PlayAction(game); }
+
+                        closeEnough = true;
+                    }
                     
-
-                        if (proximity.Options[frmm].Spot.Contains(too))
-                        { closeEnough = true; }
+                   
 
 
                         }
 
 
-                    game.CurrentPlayer.RemoveACow(too);
-                    game.CurrentPlayer.AddCow(too);    // updating player's list of cows
-
-                    game.board[frmm] = new Cow(Player.Type.None);
-                    game.board[too] = new Cow(game.CurrentPlayer.MyType);    //updating actual board
-
-                    if (Mill.IsThereAMillFor(game, too))     //A check for a mill formed. Shoots if true
-                    { game.GetAction(AvailableActions.Shoot).PlayAction(game); }
+                
                 }
 
 
