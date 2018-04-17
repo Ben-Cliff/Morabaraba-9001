@@ -9,6 +9,7 @@ namespace Morabaraba_9001.GameCode
     {
         public bool EndGame = false;
         public Dictionary<BoardPos, Cow> board = new Dictionary<BoardPos, Cow>();
+       
 
         private List<Player> _players;
         public List<Player> Players {
@@ -21,12 +22,16 @@ namespace Morabaraba_9001.GameCode
 
                     Players.Add(new Player(Player.Type.Red, 7));
                     Players.Add(new Player(Player.Type.Blue, 7));
+
+                    Game i = new Game();
+                    i.EndGame.
                 }
 
                 return _players;
             }
         }
 
+        
        
 
 

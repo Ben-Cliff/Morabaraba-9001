@@ -9,7 +9,8 @@ namespace Morabaraba_9001.GameCode
         public enum Type
         {
             Red,
-            Blue
+            Blue,
+            None
         }
         
         // This is weird just for the naming, etc

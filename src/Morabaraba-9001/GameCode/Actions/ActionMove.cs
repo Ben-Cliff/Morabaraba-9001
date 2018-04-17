@@ -21,6 +21,13 @@ namespace Morabaraba_9001.GameCode.Actions
             game.CurrentPlayer.RemoveACow(to);
             game.CurrentPlayer.AddCow(to);    // move there
 
+            game.board[frm] = new Cow(Player.Type.None); 
+            game.board[to] = new Cow(game.CurrentPlayer.MyType);    //update board
+
+            if (Mill.IsThereAMillFor(game, to))
+            { game.GetAction(AvailableActions.Shoot).PlayAction(game); }
+
+
             //                  # check
             //                      # shoot
             throw new NotImplementedException();
