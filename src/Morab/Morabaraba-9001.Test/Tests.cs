@@ -36,19 +36,22 @@ namespace Morabaraba_9001.Test
             Assert.That(g.board.Count() == 0);
 
         }
-        /*
+        
 
 
-        /*
-
+        
+        
         [Test] //Dark player start
         public void RedShouldStart()
         {
+            Game g = new Game();
+            var t = g.Players[0];
 
+            Assert.That(t.MyType == Player.Type.Red);
 
         }
 
-
+        /*
         [Test]
         public void OnlyEmptySpots()
         {
