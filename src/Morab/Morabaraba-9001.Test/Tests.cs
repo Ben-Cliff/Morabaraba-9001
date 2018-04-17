@@ -28,11 +28,12 @@ namespace Morabaraba_9001.Test
             Assert.That(player1.CowsLeftToPlace == 7);
         }
 
-        /*
+        
         [Test]
         public void GameBoardEmptyAtStart()
         {
-
+            Game g = new Game();
+            Assert.That(g.board.Count() == 0);
 
         }
         /*
