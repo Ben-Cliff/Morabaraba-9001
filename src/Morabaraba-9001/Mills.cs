@@ -18,6 +18,13 @@ namespace Morabaraba_9001
             _c = c;
         }
 
+        public bool DoIContain(BoardPos a)
+        {
+            if ((A == a) || (B == a) || (C == a)) return true;
+
+            return false;
+        }
+
         private static List<Mill> _mills;
         public static List<Mill> GetAll { get
             {
@@ -53,6 +60,7 @@ namespace Morabaraba_9001
 
                 return _mills;
             }
+
         }
     }
 }
