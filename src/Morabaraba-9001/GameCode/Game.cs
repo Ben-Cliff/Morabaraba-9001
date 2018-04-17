@@ -40,8 +40,8 @@ namespace Morabaraba_9001.GameCode
             if (Players == null)
             {
                 Players = new List<Player>();
-                Players.Add(new Player(Player.Type.Red));
-                Players.Add(new Player(Player.Type.Blue));
+                Players.Add(new Player(Player.Type.Red, 7));
+                Players.Add(new Player(Player.Type.Blue, 7));
             }
 
             //           # turn swap
@@ -54,8 +54,16 @@ namespace Morabaraba_9001.GameCode
             //           # move_posibilities check
 
             //           # place
-            if (true) // TODO: move_possibilities
+            if (_player_used.CowsLeftToPlace > 0)
+            {
                 answer = GetAction(AvailableActions.Place).PlayAction(this);
+            }
+            else // this assumes when no cows left to place we go to move
+            {
+                Console.WriteLine("\t\tThis is a temporary message, we can't do this action yet. This gets stuck in an infinite loop without blank input.");
+                Console.ReadLine();
+                //answer = ActionMove.PlayAction(this);
+            }
             //           # move
 
             // Check if anything else needs to run
