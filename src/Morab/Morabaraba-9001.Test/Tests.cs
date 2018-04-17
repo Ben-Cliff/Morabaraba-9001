@@ -28,13 +28,15 @@ namespace Morabaraba_9001.Test
             Assert.That(player1.CowsLeftToPlace == 7);
         }
 
-
+        /*
         [Test]
         public void GameBoardEmptyAtStart()
         {
 
 
         }
+        /*
+
 
         /*
 
@@ -72,16 +74,34 @@ namespace Morabaraba_9001.Test
 
     */
         //GENERAL
-
+        //Mill moo = Mill.GetAll[0];
 
         [Test]
         public void MillMadeOfSameHerd()
         {
+            //mock mill to be created
+            //check if mill has same players
+
+            Game g = new Game();
+            //3 in a row from 1 herd only
+
+            BoardPos b = new BoardPos();
+            g.board.Add(BoardPos.a1, new Cow(Player.Type.Red));
+            g.board.Add(BoardPos.a4, new Cow(Player.Type.Red));
+            g.board.Add(BoardPos.a7, new Cow(Player.Type.Red));
+            //3 in a row from both herds
+            g.board.Add(BoardPos.g1, new Cow(Player.Type.Blue));
+            g.board.Add(BoardPos.g4, new Cow(Player.Type.Red));
+            g.board.Add(BoardPos.g7, new Cow(Player.Type.Blue));
+
             
+
+            Assert.That(Mill.IsThereAMillFor(g, BoardPos.a1) == true && Mill.IsThereAMillFor(g, BoardPos.g1) == false);
+            //fml 
 
         }
 
-
+        /*
         [Test]
         public void TwoPlayersExist()
         {
@@ -90,7 +110,7 @@ namespace Morabaraba_9001.Test
 
         }
 
-
+        */
 
 
     }
