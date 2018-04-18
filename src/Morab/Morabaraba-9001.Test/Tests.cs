@@ -109,8 +109,8 @@ namespace Morabaraba_9001.Test
         [Test]
         public void TestMoveStateWhilePlacing()
         {
+            //Game g = new Game();
             Assert.That(true == false);
-
         }
 
     
@@ -144,8 +144,12 @@ namespace Morabaraba_9001.Test
         
         [Test]
         public void TwoPlayersExist()
-        {
-            Assert.That(true == false);
+        { 
+            Game g = new Game();
+            int test = g.Players.Count();
+
+            Assert.That(test == 2);
+            
             
         }
         
