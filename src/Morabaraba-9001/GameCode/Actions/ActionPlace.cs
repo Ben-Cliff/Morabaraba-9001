@@ -7,16 +7,16 @@ namespace Morabaraba_9001.GameCode.Actions
     public class ActionPlace : IAction
     {
         // also requires update players cow positions
-        public void PlayAction(Game game)
+        public void PlayAction(Game game, List<BoardPos> input)
         {
-            var user_chose = GameInput.GetBoardPosition(game, WhichPickingOption.ExpectingEmpty, "So, where would you like to place a cow?", "Sorry but you cant make a cow stand on another cow, it has to be an empty spot... Where do you choose? (e.g. input being \"a1\" goes to the board at A1).");
-            game.board[user_chose] = new Cow(game.CurrentPlayer.MyType);
+            game.board[input[0]] = new Cow(game.CurrentPlayer.MyType);
 
             // So we can store the number of cows placed
-            game.CurrentPlayer.CowWasPlaced(user_chose);
-            if (Mill.IsThereAMillFor(game, user_chose)) 
+            game.CurrentPlayer.CowWasPlaced(input[0]);
+            if (Mill.IsThereAMillFor(game, input[0])) 
             {
-                game.GetAction(AvailableActions.Shoot).PlayAction(game);
+                input.RemoveAt(0);
+                game.GetAction(AvailableActions.Shoot).PlayAction(game, input);
             }
 
             //BEN: 

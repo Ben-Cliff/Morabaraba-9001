@@ -6,15 +6,13 @@ namespace Morabaraba_9001.GameCode.Actions
 {
     public class ActionShoot : IAction
     {
-        public void PlayAction(Game game)
+        public void PlayAction(Game game, List<BoardPos> input)
         {
             // shoot
-            GameCode.BoardPos target = GameInput.GetBoardPosition(game, WhichPickingOption.ExpectingEnemyCow, "You have formed a Mill! \n Enter the co ordinate of which enemy cow you would like to shoot (You cannot shoot other mills)", "You cannot shoot there. Try Again");
+            game.OpponentPlayer.RemoveACow(input[0]);     //Remove cow from player's cow list
+            game.board[input[0]] = new Cow(Player.Type.None);     //remove cow from board
 
-            game.OpponentPlayer.RemoveACow(target);     //Remove cow from player's cow list
-            game.board[target] = new Cow(Player.Type.None);     //remove cow from board
-
-            throw new NotImplementedException();
+            input.RemoveAt(0);
         }
 
         public void Test(Game g, BoardPos b)

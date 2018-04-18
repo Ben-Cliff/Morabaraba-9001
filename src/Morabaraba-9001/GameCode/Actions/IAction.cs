@@ -14,7 +14,7 @@ namespace Morabaraba_9001.GameCode.Actions
     public interface IAction
     {
         // Return if the next action should be called
-        void PlayAction(Game game);
+        void PlayAction(Game game, List<BoardPos> input);
 
         // Mock use of this func
         void Test(Game g, BoardPos b);

@@ -76,12 +76,66 @@ namespace Morabaraba_9001.GameCode
             //           # place
             if (_player_used.CowsLeftToPlace > 0)
             {
-                GetAction(AvailableActions.Place).PlayAction(this);
+                List<BoardPos> input = new List<BoardPos>();
+                input.Add(GameInput.GetBoardPosition(this, WhichPickingOption.ExpectingEmpty, "So, where would you like to place a cow?", "Sorry but you cant make a cow stand on another cow, it has to be an empty spot... Where do you choose? (e.g. input being \"a1\" goes to the board at A1)."));
+
+                if (Mill.IsThereAMillFor(this, input[0]))
+                {
+                    input.Add(GameInput.GetBoardPosition(this, WhichPickingOption.ExpectingEnemyCow, "You have formed a Mill! \n Enter the co ordinate of which enemy cow you would like to shoot (You cannot shoot other mills)", "You cannot shoot there. Try Again"));
+                }
+
+                GetAction(AvailableActions.Place).PlayAction(this, input);
             }
             else // this assumes when no cows left to place we go to move
             {
-                //           # move
-                GetAction(AvailableActions.Move).PlayAction(this);
+                List<BoardPos> input = new List<BoardPos>();
+                if (this.CurrentPlayer.HowManyCows() == 3)         //              if 3 cows left: fly
+                {
+                    input.Add(GameInput.GetBoardPosition(this, WhichPickingOption.ExpectingAllyCow, "Enter the co ordinate of the cow you would like to fly", "You do not have any cows in that position. Try Again"));
+                    input.Add(GameInput.GetBoardPosition(this, WhichPickingOption.ExpectingEmpty, "Enter the co ordinate you would like to fly your cow to", "You can only fly to empty spots. Try Again"));      // get choice of possibility - to
+
+                    if (Mill.IsThereAMillFor(this, input[1]))
+                    {
+                        input.Add(GameInput.GetBoardPosition(this, WhichPickingOption.ExpectingEnemyCow, "You have formed a Mill! \n Enter the co ordinate of which enemy cow you would like to shoot (You cannot shoot other mills)", "You cannot shoot there. Try Again"));
+                    }
+                }
+                else
+                {
+                    bool closeEnough = false;
+                    OneAway proximity = new OneAway(BoardPos.a1, new List<BoardPos> { BoardPos.a4, BoardPos.b2, BoardPos.d1 });
+
+
+                    while (closeEnough == false)
+                    {
+
+                        var frmm = GameInput.GetBoardPosition(this, WhichPickingOption.ExpectingAllyCow, "Enter the co ordinate of the cow you would like to move", "You do not have any cows in that position. Try Again");
+                        var too = GameInput.GetBoardPosition(this, WhichPickingOption.ExpectingEmpty, "Enter the co ordinate you would like to move your cow to", "You can only move to empty spots, one unit away. Try Again");
+
+                        int intposfrm = BoardWorker.PosToIntPos(frmm);
+                        OneAway h = OneAway.Options[intposfrm];
+
+                        if (h.Spot.Contains(too))  //OneAway.Options[0].Bigme == frmm)
+                        {
+                            //updating actual board
+
+                            input.Add(frmm);
+                            input.Add(too);
+
+                            if (Mill.IsThereAMillFor(this, too))     //A check for a mill formed. Shoots if true
+                            {
+                                input.Add(GameInput.GetBoardPosition(this, WhichPickingOption.ExpectingEnemyCow, "You have formed a Mill! \n Enter the co ordinate of which enemy cow you would like to shoot (You cannot shoot other mills)", "You cannot shoot there. Try Again"));
+                            }
+
+                            closeEnough = true;
+                        }
+
+
+
+
+                    }
+                }
+                    //           # move
+                    GetAction(AvailableActions.Move).PlayAction(this, input);
             }
             
             //           # win check
