@@ -11,7 +11,7 @@ namespace Morabaraba_9001.GameCode
         ExpectingEnemyCow
     }
 
-    class GameInput
+    public class GameInput
     {
         public static BoardPos GetBoardPosition(Game game, WhichPickingOption opt, string message, string error_message)
         {
@@ -27,6 +27,8 @@ namespace Morabaraba_9001.GameCode
                         }
 
                         BoardPos acceptMePls = BoardPos.a1; // a1 means input, we use this so we have a variable to store the translated input in except when an exception is thrown
+
+
                         bool failureTest = false;
                         Console.WriteLine(message);
                         var userGives = Console.ReadLine();

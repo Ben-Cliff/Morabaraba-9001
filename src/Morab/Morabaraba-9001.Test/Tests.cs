@@ -4,6 +4,7 @@ using System.Text;
 using NUnit.Framework;
 using System.Linq;
 using Morabaraba_9001.GameCode;
+using Morabaraba_9001.GameCode.Actions;
 
 namespace Morabaraba_9001.Test
 {
@@ -51,11 +52,27 @@ namespace Morabaraba_9001.Test
 
         }
 
-        /*
+        
         [Test]
         public void OnlyEmptySpots()
         {
+            bool somethin = false;
+            try
+            {
+                Game g = new Game();
+                g.board.Add(BoardPos.a1, new Cow(Player.Type.Red));
+                g.board.Add(BoardPos.c3, new Cow(Player.Type.Blue));
+                var action = new ActionPlace();
+                action.Test(g, BoardPos.a4);
+                somethin = true;
+            }
+            
+            catch (Exception ex)
+            {
+                somethin = false;
+            }
 
+            Assert.That(true == somethin);
 
         }
 
@@ -63,7 +80,7 @@ namespace Morabaraba_9001.Test
         [Test]
         public void MaximumTwelvePlacements()
         {
-
+            Assert.That(true == false);
 
         }
 
@@ -72,11 +89,11 @@ namespace Morabaraba_9001.Test
         [Test]
         public void TestMoveStateWhilePlacing()
         {
-
+            Assert.That(true == false);
 
         }
 
-    */
+    
         //GENERAL
         //Mill moo = Mill.GetAll[0];
 
@@ -104,17 +121,14 @@ namespace Morabaraba_9001.Test
             //fml 
 
         }
-
-        /*
+        
         [Test]
         public void TwoPlayersExist()
         {
-           
-
-
+            Assert.That(true == false);
+            
         }
-
-        */
+        
 
 
     }

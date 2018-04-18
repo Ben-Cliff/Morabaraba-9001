@@ -31,5 +31,11 @@ namespace Morabaraba_9001.GameCode.Actions
             //         OR
             //    -> search through game.board -> looking at Cow.Owner == Player.Type.<which ever options>
         }
+
+        public void Test(Game g, BoardPos b)
+        {
+            if (g.board.ContainsKey(b)) throw new Exception();
+            g.board[b] = new Cow(Player.Type.Blue);
+        }
     }
 }

@@ -73,5 +73,10 @@ namespace Morabaraba_9001.GameCode.Actions
                 //                      # shoot
                 throw new NotImplementedException();
             }
+
+        public void Test(Game g, BoardPos b)
+        {
+
+        }
     }
 }
