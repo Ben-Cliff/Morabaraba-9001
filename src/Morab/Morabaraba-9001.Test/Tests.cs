@@ -148,9 +148,9 @@ namespace Morabaraba_9001.Test
             g.board.Add(BoardPos.g4, new Cow(Player.Type.Red));
             g.board.Add(BoardPos.g7, new Cow(Player.Type.Blue));
 
-            
 
-            Assert.That(Mill.IsThereAMillFor(g, BoardPos.a1) == true && Mill.IsThereAMillFor(g, BoardPos.g1) == false);
+            Assert.That(Mill.IsThereAMillFor(g, BoardPos.a1) == true);
+            Assert.That(Mill.IsThereAMillFor(g, BoardPos.g4) == false);
             //fml 
 
         }

@@ -20,7 +20,7 @@ namespace Morabaraba_9001.GameCode.Actions
                     GameCode.BoardPos to = GameInput.GetBoardPosition(game, WhichPickingOption.ExpectingEmpty, "Enter the co ordinate you would like to fly your cow to", "You can only fly to empty spots. Try Again");      // get choice of possibility - to
 
                     game.CurrentPlayer.RemoveACow(to);
-                    game.CurrentPlayer.AddCow(to);    // updating player's list of cows
+                    game.CurrentPlayer.CowWasPlaced(to);    // updating player's list of cows
 
                     game.board[frm] = new Cow(Player.Type.None);
                     game.board[to] = new Cow(game.CurrentPlayer.MyType);    //updating actual board
@@ -48,7 +48,7 @@ namespace Morabaraba_9001.GameCode.Actions
 
 
                         game.CurrentPlayer.RemoveACow(too);
-                        game.CurrentPlayer.AddCow(too);    // updating player's list of cows
+                        game.CurrentPlayer.CowWasPlaced(too);    // updating player's list of cows
 
                         game.board[frmm] = new Cow(Player.Type.None);
                         game.board[too] = new Cow(game.CurrentPlayer.MyType);    //updating actual board

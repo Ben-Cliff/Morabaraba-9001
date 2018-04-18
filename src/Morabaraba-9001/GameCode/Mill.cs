@@ -107,7 +107,7 @@ namespace Morabaraba_9001.GameCode
         {
             var all_checks = GetMillsFor(b);
 
-            foreach (var mill in GetAll)
+            foreach (var mill in all_checks)
             {
                 if (mill.IsFilled(game))
                     return true;

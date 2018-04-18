@@ -40,15 +40,15 @@ namespace Morabaraba_9001.GameCode
             }
         }
 
-        public void AddCow(BoardPos pos)
-        {
-            if (MyCowsPos.Contains(pos))
-            {
-                throw new Exception("There is already have a cow there!");
-            }
-
-            MyCowsPos.Add(pos);
-        }
+        //public void AddCow(BoardPos pos)
+        //{
+        //    if (MyCowsPos.Contains(pos))
+        //    {
+        //        throw new Exception("There is already have a cow there!");
+        //    }
+        //
+        //    MyCowsPos.Add(pos);
+        //}
 
         public int HowManyCows()
         {
