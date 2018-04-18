@@ -38,7 +38,9 @@ namespace Morabaraba_9001.GameCode
 
     
         private Player _player_used;
-        public Player CurrentPlayer { get { return _player_used; } }
+        public Player CurrentPlayer { get { return _player_used; }
+        set { if (_player_used == null) _player_used = value; }
+        }
         // We only look for the player after picking current player
 
         public Player OpponentPlayer { get { return Players[0]; } }

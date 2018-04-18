@@ -26,7 +26,7 @@ namespace Morabaraba_9001.GameCode
         List<BoardPos> MyCowsPos = new List<BoardPos>();
         //Place cow
 
-        public int CowsLeftToPlace { get; private set; }
+        public int CowsLeftToPlace { get; set; }
         public void CowWasPlaced(BoardPos where_placed)
         {
             if (CowsLeftToPlace == 0)

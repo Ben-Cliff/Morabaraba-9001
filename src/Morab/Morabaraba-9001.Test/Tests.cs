@@ -80,8 +80,28 @@ namespace Morabaraba_9001.Test
         [Test]
         public void MaximumTwelvePlacements()
         {
-            Assert.That(true == false);
+            Game g = new Game();
+            g.CurrentPlayer = new Player(Player.Type.Red, 1);
+            int count_a = g.CurrentPlayer.CowsLeftToPlace;
+            ActionPlace place = new ActionPlace();
+            place.Test(g, BoardPos.a1);
+            g.CurrentPlayer.CowWasPlaced(BoardPos.a1);
+            int count_b = g.CurrentPlayer.CowsLeftToPlace;
 
+            bool was_it_working = true;
+            try
+            {
+                place.Test(g, BoardPos.a4);
+                was_it_working = false;
+            }
+            catch
+            {
+                was_it_working = true;
+            }
+
+            Assert.That(count_a == 1);
+            Assert.That(count_b == 0);
+            Assert.That(was_it_working == true);
         }
 
 

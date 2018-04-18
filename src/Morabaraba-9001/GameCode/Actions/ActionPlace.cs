@@ -34,7 +34,8 @@ namespace Morabaraba_9001.GameCode.Actions
 
         public void Test(Game g, BoardPos b)
         {
-            if (g.board.ContainsKey(b)) throw new Exception();
+            if (g.board.ContainsKey(b)) throw new Exception("Board pos had something");
+            if (g.CurrentPlayer.CowsLeftToPlace <= 0) throw new Exception("Didnt have cows");
             g.board[b] = new Cow(Player.Type.Blue);
         }
     }
