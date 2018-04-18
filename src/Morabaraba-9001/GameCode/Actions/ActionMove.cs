@@ -56,11 +56,5 @@ namespace Morabaraba_9001.GameCode.Actions
                 //                      # shoot
           
             }
-
-        public void Test(Game g, BoardPos b)
-        {
-            if (g.CurrentPlayer.CowsLeftToPlace > 0)
-            { throw new Exception("Error"); }
-        }
     }
 }

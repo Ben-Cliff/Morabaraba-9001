@@ -63,7 +63,7 @@ namespace Morabaraba_9001.Test
                 g.board.Add(BoardPos.a1, new Cow(Player.Type.Red));
                 g.board.Add(BoardPos.c3, new Cow(Player.Type.Blue));
                 var action = new ActionPlace();
-                action.Test(g, BoardPos.a4);
+                action.PlayAction(g, new List<BoardPos>() { BoardPos.a4 });
                 somethin = true;
             }
             
@@ -84,14 +84,14 @@ namespace Morabaraba_9001.Test
             g.CurrentPlayer = new Player(Player.Type.Red, 1);
             int count_a = g.CurrentPlayer.CowsLeftToPlace;
             ActionPlace place = new ActionPlace();
-            place.Test(g, BoardPos.a1);
+            place.PlayAction (g, new List<BoardPos>() { BoardPos.a1 });
             g.CurrentPlayer.CowWasPlaced(BoardPos.a1);
             int count_b = g.CurrentPlayer.CowsLeftToPlace;
 
             bool was_it_working = true;
             try
             {
-                place.Test(g, BoardPos.a4);
+                place.PlayAction(g, new List<BoardPos>() { BoardPos.a4 });
                 was_it_working = false;
             }
             catch
@@ -116,7 +116,7 @@ namespace Morabaraba_9001.Test
             
             try
             {
-                am.Test(g, BoardPos.b4);
+                am.PlayAction(g, new List<BoardPos>() { BoardPos.b4 });
                 ans = true;
             }
             catch (Exception)

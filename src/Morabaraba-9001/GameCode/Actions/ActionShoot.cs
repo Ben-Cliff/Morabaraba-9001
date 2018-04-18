@@ -14,10 +14,5 @@ namespace Morabaraba_9001.GameCode.Actions
 
             input.RemoveAt(0);
         }
-
-        public void Test(Game g, BoardPos b)
-        {
-            
-        }
     }
 }

@@ -15,8 +15,5 @@ namespace Morabaraba_9001.GameCode.Actions
     {
         // Return if the next action should be called
         void PlayAction(Game game, List<BoardPos> input);
-
-        // Mock use of this func
-        void Test(Game g, BoardPos b);
     }
 }
