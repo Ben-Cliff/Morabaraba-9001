@@ -10,6 +10,10 @@ namespace Morabaraba_9001.GameCode.Actions
             {
                 GameCode.BoardPos frmm;
                 GameCode.BoardPos too;
+            if (game.CurrentPlayer.CowsLeftToPlace > 0)
+            { throw new Exception("Error"); }
+
+
                 if (game.CurrentPlayer.HowManyCows() == 3)         //              if 3 cows left: fly
                     {
                     GameCode.BoardPos frm = GameInput.GetBoardPosition(game, WhichPickingOption.ExpectingAllyCow, "Enter the co ordinate of the cow you would like to fly", "You do not have any cows in that position. Try Again");
@@ -71,12 +75,13 @@ namespace Morabaraba_9001.GameCode.Actions
 
                 //                  # check
                 //                      # shoot
-                throw new NotImplementedException();
+          
             }
 
         public void Test(Game g, BoardPos b)
         {
-
+            if (g.CurrentPlayer.CowsLeftToPlace > 0)
+            { throw new Exception("Error"); }
         }
     }
 }

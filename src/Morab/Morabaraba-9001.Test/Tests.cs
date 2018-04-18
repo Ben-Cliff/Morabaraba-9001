@@ -109,8 +109,21 @@ namespace Morabaraba_9001.Test
         [Test]
         public void TestMoveStateWhilePlacing()
         {
-            //Game g = new Game();
-            Assert.That(true == false);
+            Game g = new Game();
+            var players = g.Players;    //creates players when looking at players list
+            ActionMove am = new ActionMove();
+            bool ans = false;
+            
+            try
+            {
+                am.Test(g, BoardPos.b4);
+                ans = true;
+            }
+            catch (Exception)
+            {
+            }
+
+            Assert.That(ans == false);
         }
 
     
