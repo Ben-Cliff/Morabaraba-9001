@@ -85,6 +85,9 @@ namespace Morabaraba_9001.GameCode
                     _mills.Add(new Mill(BoardPos.e5, BoardPos.f6, BoardPos.g7));
                 }
 
+                List<List<BoardPos>> asdf = new List<List<BoardPos>>();
+                asdf.Add(new List<BoardPos>() { BoardPos.a1, BoardPos.a4, BoardPos.a7 });
+
                 return _mills;
             }
 
