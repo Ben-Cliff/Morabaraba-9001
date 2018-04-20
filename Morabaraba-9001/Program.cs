@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Morabaraba_9001
+namespace Morabaraba9001
 {
     class Program
     {

@@ -7,10 +7,10 @@ namespace Morabaraba9001.Interfaces
         IPlayer player2 { get; }
         Colour WhoseTurn{ get; }
 
-        bool checkIsvalidInputPlace(int to,);
+        bool checkIsvalidInputPlace(int to);
         bool checkIsvalidInputMove(int from, int to);
-        bool checkIsvalidInputFly(int from, int to, );
-        bool checkIsvalidInputShoot(int from, int to, );
+        bool checkIsvalidInputFly(int from, int to);
+        bool checkIsvalidInputShoot(int from, int to);
 
 
         bool isAMillFormd(int to);
