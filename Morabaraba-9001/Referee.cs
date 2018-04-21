@@ -15,6 +15,8 @@ namespace Morabaraba9001
 
         public IBoard game_board { get; private set; }
 
+        public bool EndGame { get; private set; }
+
         public Referee(IBoard board, IPlayer firstPlayer, IPlayer secondPlayer)
         {
             game_board = board;
@@ -73,6 +75,8 @@ namespace Morabaraba9001
                     break;
             }
 
+            //Check player can acutally move
+
             Console.WriteLine("Referee: Cool, so lets see what you can do...");
             if (ImLookingAt.CowsInBox > 0)
             {
@@ -107,6 +111,9 @@ namespace Morabaraba9001
             }
 
             // Mill check
+
+            // win check
+            //Just use return; to finish the function
 
             Console.WriteLine("Referee: Neat, well done. You completed your turn");
             switch (WhoseTurn)

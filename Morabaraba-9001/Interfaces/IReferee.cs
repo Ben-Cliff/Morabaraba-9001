@@ -7,6 +7,7 @@ namespace Morabaraba9001.Interfaces
         IPlayer player2 { get; }
         Colour WhoseTurn { get; }
         IBoard game_board { get; }
+        bool EndGame {get;}
 
         bool checkIsvalidInputPlace(int to);
         bool checkIsvalidInputMove(int from, int to);
