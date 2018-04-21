@@ -1,14 +1,11 @@
 language: csharp
-os:
-	- linux
-	- osx
-	- windows
 solution: Morabaraba-9001.sln
-
-install:
-	- sudo apt-get install nunit-console
-	- nuget restore ./Morabaraba-9001.sln
-	
+dotnet: 2.1.4
 script:
-	- xbuild ./Morabaraba-9001.sln
-	- nunit-console ./Morabaraba-9001.Tests/bin/Debug/netcoreapp2.0/Morabaraba-9001.Test.dll
+  - dotnet test Morabaraba-9001.Test
+matrix:
+  include:
+    - dotnet: 2.0.0
+    - dotnet: 2.0.2
+    - dotnet: 2.1.4
+      os: osx
