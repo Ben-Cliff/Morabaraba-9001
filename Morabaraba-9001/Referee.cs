@@ -57,7 +57,31 @@ namespace Morabaraba9001
 
         public bool isAMillFormd(int to)
         {
-            throw new NotImplementedException();
+            // First find all mills containing "to"
+            List<List<int>> final_checks = new List<List<int>>();
+            foreach (var m in game_board.Mills)
+            {
+                if (m.Contains(to))
+                {
+                    final_checks.Add(m);
+                }
+            }
+
+            // Go through final_checks for that point
+            while (!(final_checks.Count == 0))
+            {
+                var this_check = final_checks[0];
+                this_check.RemoveAt(0);
+                if ((game_board.Positions[to] == game_board.Positions[this_check[0]]) &&
+                    (game_board.Positions[to] == game_board.Positions[this_check[1]]) &&
+                    (game_board.Positions[to] == game_board.Positions[this_check[2]]))
+                    {
+                        return true;
+                    }
+
+            }
+
+            return false;
         }
 
         public void playTheTurn()
