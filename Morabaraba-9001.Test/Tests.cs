@@ -1,12 +1,13 @@
 ﻿using Morabaraba9001;
+using Morabaraba9001.Interfaces;
 using NUnit.Framework;
+using System.Collections.Generic;
 
 namespace Morabaraba_9001.Test
 {
     [TestFixture]
     public class Tests
     {
-
         /*
             FIRST PRINCPLES:
                 -> FAST
@@ -22,17 +23,42 @@ namespace Morabaraba_9001.Test
              * // Note we used 7 to test if this works in testing with a smaller herd
              * Assert.That(player1.CowsLeftToPlace == 7);
              */
+            Assert.That(false);
         }
 
 
         [Test]
         public void GameBoardEmptyAtStart()
         {
-            /*
-             * Game g = new Game();
-             * Assert.That(g.board.Count() == 0);
-             */
+             // From implementing the "first" of the tests, made sure all tests not implemented fail for the start for us (since we are trying to succeed in and use every test)
 
+             // First we create the testing requirements, this needs a gameboard
+             // For the empty game board we need to create it as if it is a new game's board (aka. in the positions it has nothing):
+            List<Colour> boardList = new List<Colour>()
+            {
+                Colour.None, Colour.None, Colour.None, Colour.None,
+                Colour.None, Colour.None, Colour.None, Colour.None,
+                Colour.None, Colour.None, Colour.None, Colour.None,
+                Colour.None, Colour.None, Colour.None, Colour.None,
+                Colour.None, Colour.None, Colour.None, Colour.None,
+                Colour.None, Colour.None, Colour.None, Colour.None
+            };
+            GameBoard gameBoard = new GameBoard(boardList);
+
+            // Finally we run the function and see if we get as many of the legitimate correct answers as we need.
+            //  -> as an added note, we could have 24 "None" in the list and a single "Dark"
+            //     -> Using ONLY the None doesnt guarantee it is correct from the testing perspective
+            //     -> We should work on covering all bases as often as possible
+            Assert.That(gameBoard.PlayerCowCount(Colour.None) == 24);
+            Assert.That(gameBoard.PlayerCowCount(Colour.Dark) == 0);
+            Assert.That(gameBoard.PlayerCowCount(Colour.Light) == 0);
+
+            // You will see on this push:
+            //  -> Failed   GameBoardEmptyAtStart
+            //     Error Message:
+            //     System.NotImplementedException : The method or operation is not implemented.
+            
+            // Run tests using "dotnet test" in console on your PC as you need
         }
 
 
@@ -48,7 +74,7 @@ namespace Morabaraba_9001.Test
              *
              * Assert.That(t.MyType == Player.Type.Red);
              */
-
+            Assert.That(false);
         }
 
 
@@ -74,7 +100,7 @@ namespace Morabaraba_9001.Test
             * 
             * Assert.That(true == somethin);
             */
-
+            Assert.That(false);
         }
 
 
@@ -105,6 +131,7 @@ namespace Morabaraba_9001.Test
             * Assert.That(count_b == 0);
             * Assert.That(was_it_working == true);
             */
+            Assert.That(false);
         }
 
 
@@ -128,6 +155,7 @@ namespace Morabaraba_9001.Test
             * 
             * Assert.That(ans == false);
             */
+            Assert.That(false);
         }
 
 
@@ -158,6 +186,7 @@ namespace Morabaraba_9001.Test
             * Assert.That(Mill.IsThereAMillFor(g, BoardPos.g4) == false);
             * //fml 
             */
+            Assert.That(false);
         }
 
         [Test]
@@ -169,7 +198,7 @@ namespace Morabaraba_9001.Test
              * 
              * Assert.That(test == 2);
              */
-
+            Assert.That(false);
         }
     }
 }
