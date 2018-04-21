@@ -16,6 +16,7 @@ namespace Morabaraba9001
             List<Colour> board = new List<Colour>();
             // Currently the board is empty to start, this is just since we test if it compiles and runs
             GameBoard gameBoard = new GameBoard(board);
+            
 
             Console.WriteLine("Hello World!");
             Console.ReadLine();

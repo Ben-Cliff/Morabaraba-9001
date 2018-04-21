@@ -32,9 +32,31 @@ namespace Morabaraba9001
 
         public List<List<int>> Mills { get; private set; }
 
+        public List<string> PositionNames { get; private set; }
+
         public GameBoard(List<Colour> newPositions)
         {
             Positions = newPositions;
+            PositionNames = new List<string>() { "a1", "a4", "a7", "d7", "g7", "g4", "g1", "d1", "b2" , "b4", "b6", "d6", "f6", "f4", "f2", "d2", "c3", "c4", "c5", "d5", "e5" , "e4" , "e3", "d3"  };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
             // Create the mills this board uses
             // Note: should we also input it like the board's current state for testing? Since technically we never change mills.

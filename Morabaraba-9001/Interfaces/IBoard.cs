@@ -3,8 +3,9 @@ using System.Collections.Generic;
 
 namespace Morabaraba9001.Interfaces
 {
-    public interface IBoard
+    public interface IBoard 
     {
+        List<string> PositionNames { get; }
         List<Colour> Positions { get; }
         List<List<int>> Mills { get; }
    

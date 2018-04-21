@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Morabaraba9001.Enums
 {
-    enum RefListens
+    public enum RefListens
     {
         SinglePosition,
         DoublePosition
