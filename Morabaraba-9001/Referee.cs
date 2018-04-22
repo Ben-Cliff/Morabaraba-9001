@@ -1,7 +1,6 @@
 ﻿using Morabaraba9001.Interfaces;
 using System;
 using System.Collections.Generic;
-using System.Text;
 using Morabaraba9001.Enums;
 
 namespace Morabaraba9001
@@ -21,7 +20,7 @@ namespace Morabaraba9001
         //creating one away list
         //PositionNames = list of all inputs 1 (a1) - 23 (d3)
         private List<List<int>> OneAway = new List<List<int>> {
-               new List<int>{1,8,7}, //a1
+               new List<int>{1,8,7}, //a1, a2 next, etc. -> going around the board for clockwise indexes going in
                new List<int>{0,9,2},
                new List<int>{1,10,3},
                new List<int>{2,11,4 },
@@ -74,63 +73,41 @@ namespace Morabaraba9001
             {
                 Console.WriteLine("Referee: Haibo! You have no bovine here. Try again");
                 return false;
-
             }
 
             Console.WriteLine("Referee: From coordinate accepted");
-
-
-
-
+           
             if (game_board.Positions[to] != Colour.None)
             {
                 Console.WriteLine("Referee: Haibo! This appears to be filled. Chose a non-bovine affiliated spot to move to");
                 return false;
-
             }
-
-
+            
             Console.WriteLine("Referee: 'To' coordinate accepted");
             return true;
         }
 
         public bool checkIsvalidInputMove(int from, int to)
         {
-            //valid to
-            // -> next to (one away) + empty
-            //valid from
-            // -> cow = same herd 
-
             Console.WriteLine("Referee: Let's take a look at what you have selected");
 
             if (game_board.Positions[from] != this.ImLookingAt.playerColour)
             {
                 Console.WriteLine("Referee: Haibo! You have no bovine here. Try again");
                 return false;
-
             }
 
             Console.WriteLine("Referee: From coordinate accepted");
-
-
-
-
+            
             if (game_board.Positions[to] != Colour.None)
             {
                 Console.WriteLine("Referee: Haibo! This appears to be filled. Chose a non-bovine affiliated spot to move to");
                 return false;
-
             }
-
-
-            Console.WriteLine("Referee: 'To' coordinate accepted");
-
-            Console.WriteLine("Referee: Now checking for if your desired coordinates is adjacent to eachother \n ......... \n ......... \n .........");
-
-
-
             
-
+            Console.WriteLine("Referee: 'To' coordinate accepted");
+            Console.WriteLine("Referee: Now checking for if your desired coordinates is adjacent to eachother \n ......... \n ......... \n .........");
+            
             List<int> FineTuned = OneAway[from];
             if (FineTuned.Contains(to) == false )
             {
@@ -192,7 +169,6 @@ namespace Morabaraba9001
                        
                         final_checks.Add(game_board.Mills[i]);
                     }
-
                 }
             }
 
@@ -207,8 +183,6 @@ namespace Morabaraba9001
                     return true;
                 }
             }
-
-   
             return false;
         }
 
@@ -244,7 +218,7 @@ namespace Morabaraba9001
             (int, int) userGave = (-1, -1);
 
             Console.WriteLine("Referee: Cool, so lets see what you can do...");
-            if (ImLookingAt.CowsInBox > 0)                   // ******************************************************************************PLACE STATE                          
+            if (ImLookingAt.CowsInBox > 0)                                                      // ******************************************************************************PLACE STATE                          
             {
                 Console.WriteLine("Referee: you still have cows in your box, so you are going to place one in an open spot on the board, where shall that be? " + "Your box has: " + ImLookingAt.CowsInBox.ToString() + " cows");
                 userGave = ImLookingAt.getActionInput(Enums.RefListens.SinglePosition);
@@ -254,10 +228,9 @@ namespace Morabaraba9001
                     userGave = ImLookingAt.getActionInput(Enums.RefListens.SinglePosition);
                     ref_test1 = checkIsvalidInputPlace(userGave.Item2);
                 }
-                
                 ImLookingAt.placeCow(game_board, userGave.Item2);
             }
-            else if (game_board.PlayerCowCount(ImLookingAt.playerColour) == 3) // ******************************************************************************FLY STATE
+            else if (game_board.PlayerCowCount(ImLookingAt.playerColour) == 3)                  // ******************************************************************************FLY STATE
             {
                 Console.WriteLine("Referee: You have " + game_board.PlayerCowCount(WhoseTurn).ToString() + " cows left on el board");
                 userGave = ImLookingAt.getActionInput(Enums.RefListens.DoublePosition);
@@ -267,22 +240,18 @@ namespace Morabaraba9001
                     userGave = ImLookingAt.getActionInput(Enums.RefListens.DoublePosition);
                     ref_test1 = checkIsvalidInputFly(userGave.Item1, userGave.Item2);
                 }
-
                 ImLookingAt.flyCow(game_board, userGave.Item1, userGave.Item2);
             }
-            else                                                                // ******************************************************************************MOVE STATE
+            else                                                                                // ******************************************************************************MOVE STATE
             {
                 userGave = ImLookingAt.getActionInput(Enums.RefListens.DoublePosition);
-
                 bool ref_test1 = checkIsvalidInputMove(userGave.Item1 , userGave.Item2);
                 while (ref_test1 == false)
                 {
                     userGave = ImLookingAt.getActionInput(Enums.RefListens.DoublePosition);
                     ref_test1 = checkIsvalidInputMove(userGave.Item1 , userGave.Item2);
                 }
-
                 ImLookingAt.moveCow(game_board, userGave.Item1, userGave.Item2);
-
             }
 
             Colour whatWeLookAt = Colour.None;
@@ -298,6 +267,7 @@ namespace Morabaraba9001
                 {
                     whatWeLookAt = Colour.Dark;
                 }
+
                 for (int i = 0; i < game_board.Positions.Count; i++)
                 {
                     if (game_board.Positions[i] == whatWeLookAt)
@@ -336,19 +306,12 @@ namespace Morabaraba9001
                     Console.WriteLine("Referee: Success Shot! ");
                     ImLookingAt.shootCow(game_board, target);
                 }
-                
             }
 
             // win check
             //Just use return; to finish the function
-
             CheckEndGame();
-
-
-
-
-
-
+            
             Console.WriteLine("Referee: Neat, well done. You completed your turn");
             switch (WhoseTurn)
             {
@@ -371,9 +334,6 @@ namespace Morabaraba9001
 
         public void CheckEndGame()
         {
-
-
-
             Colour whatWeLookAt = Colour.None;
             if (ImLookingAt.playerColour == Colour.Dark)
             {
@@ -383,20 +343,18 @@ namespace Morabaraba9001
             {
                 whatWeLookAt = Colour.Dark;
             }
+
             if (game_board.PlayerCowCount(whatWeLookAt) == 2) //only two cows on board
             {
                 if (whatWeLookAt == Colour.Dark)
                 {
                     if (player1.CowsInBox == 0) //everything has been placed
                     {
-
                         //light wins
                         EndGame = true;
                         return;                                                                             //************************************ GAME ENDS HERE
                     }
-
                 }
-
                 else
                 {
                     if (player2.CowsInBox == 0) //everything has been placed
@@ -405,13 +363,8 @@ namespace Morabaraba9001
                         EndGame = true;
                         return;                                                                             //************************************ GAME ENDS HERE;
                     }
-
                 }
             }
-
-
-
-
         }
 
         public bool IsAMoveAvailable()
@@ -444,8 +397,7 @@ namespace Morabaraba9001
                 Console.WriteLine(e.Message);
                // throw e;
             }
-
-
+            
             return false;
         }
     }

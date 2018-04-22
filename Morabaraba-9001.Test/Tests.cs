@@ -1,5 +1,4 @@
 ﻿using Morabaraba9001;
-using Morabaraba9001.Interfaces;
 using NUnit.Framework;
 using System.Collections.Generic;
 using Morabaraba9001.Enums;
@@ -28,8 +27,7 @@ namespace Morabaraba_9001.Test
 
             Assert.That(player1.PlayBoard.PlayerCowCount(player1.playerColour) == 12);
         }
-
-
+        
         [Test]
         public void GameBoardEmptyAtStart()
         {
@@ -63,11 +61,7 @@ namespace Morabaraba_9001.Test
 
             // Run tests using "dotnet test" in console on your PC as you need
         }
-
-
-
-
-
+        
         [Test] //Dark player start
         public void DarkShouldStart()
         {
@@ -80,8 +74,7 @@ namespace Morabaraba_9001.Test
 
             Assert.That(Peter.WhoseTurn == Colour.Dark);
         }
-
-
+        
         [Test]
         public void OnlyEmptySpots()
         {
@@ -94,8 +87,7 @@ namespace Morabaraba_9001.Test
 
             Assert.That(gameBoard.PlayerCowCount(Colour.Dark) == 0 && gameBoard.PlayerCowCount(Colour.Light) == 0 && gameBoard.PlayerCowCount(Colour.None) == 24);
         }
-
-
+        
         [Test]
         public void MaximumTwelvePlacements()
         {
@@ -113,9 +105,7 @@ namespace Morabaraba_9001.Test
             Assert.That(player1.PlayBoard.PlayerCowCount(Colour.Dark) == 12);
 
         }
-
-
-
+        
         [Test]
         public void TestMoveStateWhilePlacing()
         {
@@ -133,10 +123,8 @@ namespace Morabaraba_9001.Test
             Assert.That(gameBoard.Positions[2] == Colour.Dark);        //Asserts that the player is still infact placing
 
         }
-
-
+        
         //GENERAL
-        //Mill moo = Mill.GetAll[0];
 
         [Test]
         public void MillMadeOfSameHerd()
@@ -156,9 +144,7 @@ namespace Morabaraba_9001.Test
 
 
         }
-
-
-
+        
         [Test]
         public void MillCheckDifferentCowsInMill()
         {
@@ -177,8 +163,7 @@ namespace Morabaraba_9001.Test
             Assert.That(!Peter.isAMillFormd(0));
 
         }
-
-
+        
         [Test]
         public void MillAndCorners()
         {
@@ -202,8 +187,7 @@ namespace Morabaraba_9001.Test
             Assert.That(!Peter.isAMillFormd(13));
 
         }
-
-
+        
         [Test]
         public void TwoPlayersExist()
         {
@@ -217,8 +201,7 @@ namespace Morabaraba_9001.Test
             Assert.That(Peter.player1 != null && Peter.player2 != null && Peter.player1 != Peter.player2);
 
         }
-
-
+        
         [Test]
         public void CowsPlaceOnEmptySpots()
         {
@@ -240,12 +223,10 @@ namespace Morabaraba_9001.Test
 
 
         }
-
-
+        
         //------------------------------------------------------------------------------------------------------------------------------------------------------------------
         //During Moving
-
-
+        
         [Test]
         public void MoveAdjacentDark()
         {
@@ -263,8 +244,7 @@ namespace Morabaraba_9001.Test
 
 
         }
-
-
+        
         [Test]
         public void MoveAdjacentLight()
         {
@@ -281,10 +261,7 @@ namespace Morabaraba_9001.Test
 
 
         }
-
-
-
-
+        
         [Test]
         public void MovingDoesNotChangeNumberOfCows()
         {
@@ -301,9 +278,7 @@ namespace Morabaraba_9001.Test
             //dark player
             Assert.That(countOne == countTwo); //
         }
-
-
-
+        
         [Test]
         public void ThreeCowsMeansflystate()
         {
@@ -325,8 +300,7 @@ namespace Morabaraba_9001.Test
             Assert.That(board[3] == Player1.playerColour); //fly is successful
             Assert.That(board[23] == Colour.None); //fly cannot occur as player2 has 4 cows on baord
         }
-
-
+        
         [Test]
         public void FlyCowTest()
         {
@@ -363,8 +337,7 @@ namespace Morabaraba_9001.Test
             Assert.That(Peter.checkIsvalidInputShoot(0, false) == false);
             Assert.That(Peter.checkIsvalidInputShoot(4, false) == true);
         }
-
-
+        
         [Test]
         public void CanShootMillsWhenAllMills()
         {
@@ -393,7 +366,6 @@ namespace Morabaraba_9001.Test
             Assert.That(Peter.checkIsvalidInputShoot(0, false) == false);  //Ref set to player1 by default
 
         }
-
 
         [Test]
         public void CantShootAtNothing()
@@ -427,10 +399,7 @@ namespace Morabaraba_9001.Test
             //dark player
             Assert.That(countOne == countTwo+1 ); //
         }
-
-
-
-
+        
         [Test]
         public void WinOccursifHasFewerThan3Cows()
         {
@@ -448,8 +417,7 @@ namespace Morabaraba_9001.Test
             //dark player
             Assert.That(Peter.EndGame); //
         }
-
-
+        
         [Test]
         public void WinOccursIfOpponentCannotMove()
         {
@@ -488,15 +456,5 @@ namespace Morabaraba_9001.Test
 
             Assert.That(test_spot_for_mill != test_spot_for_mill_after);
         }
-
-
-
-
-
-
-
-
-
-
     }
 }

@@ -1,5 +1,4 @@
-﻿using System;
-namespace Morabaraba9001.Interfaces
+﻿namespace Morabaraba9001.Interfaces
 {
     public enum PlayStates
     {

@@ -1,5 +1,4 @@
-﻿using System;
-namespace Morabaraba9001.Enums
+﻿namespace Morabaraba9001.Enums
 {
     public enum Colour
     {
