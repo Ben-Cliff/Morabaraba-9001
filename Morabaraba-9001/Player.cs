@@ -28,23 +28,27 @@ namespace Morabaraba9001
 
         public void flyCow(IBoard board, int from, int to)
         {
-            throw new NotImplementedException();
+            board.AdjustBoard_Fly(from, to, this.playerColour);
+            Console.WriteLine("Player's Cow Flown");
         }
 
 
         public void moveCow(IBoard board, int from, int to)
         {
-            throw new NotImplementedException();
+            board.AdjustBoard_Move(from, to, this.playerColour);
+            Console.WriteLine("Player's Cow Moved");
         }
 
         public void placeCow(IBoard board, int to)
         {
-            throw new NotImplementedException();
+            board.AdjustBoard_Place(to, this.playerColour);
+            Console.WriteLine("Player's Cow was placed");
         }
 
         public void shootCow(IBoard board, int target)
         {
-            throw new NotImplementedException();
+            board.AdjustBoard_Shoot(target);
+            Console.WriteLine("Enemy Player's Cow was Shot");
         }
 
         public (int, int) getActionInput(RefListens to)

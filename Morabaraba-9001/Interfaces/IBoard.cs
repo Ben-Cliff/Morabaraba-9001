@@ -18,7 +18,7 @@ namespace Morabaraba9001.Interfaces
         bool AdjustBoard_Place(int position, Colour player);
         bool AdjustBoard_Fly( int positionFrom, int positionTo, Colour player);
         bool AdjustBoard_Move(int positionFrom, int positionTo, Colour player);
-        bool AdjustBoard_Shoot(int targer, Colour player);
+        bool AdjustBoard_Shoot(int targer);
         int PlayerCowCount(Colour c);
 
         void DrawBoard();

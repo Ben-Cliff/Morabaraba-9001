@@ -94,7 +94,7 @@ namespace Morabaraba9001
             return true;
         }
 
-        public bool AdjustBoard_Shoot(int targer, Colour player)
+        public bool AdjustBoard_Shoot(int targer)
         {
             Positions[targer] = Colour.None;
             return true;
