@@ -165,29 +165,68 @@ namespace Morabaraba9001
         public bool isAMillFormd(int to)
         {
             // First find all mills containing "to"
-            List<List<int>> final_checks = new List<List<int>>();
-            foreach (var m in game_board.Mills)
+            foreach(var a in game_board.Mills)
             {
-                if (m.Contains(to))
+                Console.WriteLine(Convert.ToString(a.Count));
+
+
+            }
+            List<List<int>> final_checks = new List<List<int>>();
+
+            for (int i = 0; i < game_board.Mills.Count; i++)
+            {
+
+                foreach (var a in game_board.Mills[i])
                 {
-                    final_checks.Add(m);
+                    if (a == to)
+                    {
+                        Console.WriteLine(game_board.Mills[i].Count.ToString() + " jsdf908jh04wtrwsf");
+                        final_checks.Add(game_board.Mills[i]);
+                    }
+
                 }
             }
 
+
+
+
+            //foreach (var m in game_board.Mills)
+            //{
+            //    if (m.Contains(to))
+            //    {
+            //        final_checks.Add(m);
+            //    }
+            //}
+            //
             // Go through final_checks for that point
-            while (!(final_checks.Count == 0))
+
+
+            for (int i = 0; i < final_checks.Count; i++)
             {
-                var this_check = final_checks[0];
-                this_check.RemoveAt(0);
+                var this_check = final_checks[i];
+          
                 if ((game_board.Positions[to] == game_board.Positions[this_check[0]]) &&
                     (game_board.Positions[to] == game_board.Positions[this_check[1]]) &&
                     (game_board.Positions[to] == game_board.Positions[this_check[2]]))
-                    {
-                        return true;
-                    }
-
+                {
+                    return true;
+                }
             }
 
+            //
+            //while (!(final_checks.Count == 0))
+            //{
+            //    var this_check = final_checks[0];
+            //    this_check.RemoveAt(0);
+            //    if ((game_board.Positions[to] == game_board.Positions[this_check[0]]) &&
+            //        (game_board.Positions[to] == game_board.Positions[this_check[1]]) &&
+            //        (game_board.Positions[to] == game_board.Positions[this_check[2]]))
+            //        {
+            //            return true;
+            //        }
+            //
+            //}
+            //
             return false;
         }
 
@@ -209,50 +248,75 @@ namespace Morabaraba9001
 
             //Check player can acutally move
 
+            (int, int) userGave = (-1, -1);
+
             Console.WriteLine("Referee: Cool, so lets see what you can do...");
             if (ImLookingAt.CowsInBox > 0)
             {
                 Console.WriteLine("Referee: you still have cows in your box, so you are going to place one in an open spot on the board, where shall that be?");
-                var userGave = ImLookingAt.getActionInput(Enums.RefListens.SinglePosition);
-                bool ref_test1 = checkIsvalidInputPlace(userGave.Item1); //**************************************************************************
+                userGave = ImLookingAt.getActionInput(Enums.RefListens.SinglePosition);
+                bool ref_test1 = checkIsvalidInputPlace(userGave.Item2); //**************************************************************************
                 while (ref_test1 == false)
                 {
                     userGave = ImLookingAt.getActionInput(Enums.RefListens.SinglePosition);
-                    ref_test1 = checkIsvalidInputPlace(userGave.Item1);
+                    ref_test1 = checkIsvalidInputPlace(userGave.Item2);
                 }
                 
-                ImLookingAt.placeCow(game_board, userGave.Item1);
+                ImLookingAt.placeCow(game_board, userGave.Item2);
             }
 
 
 
             else if (game_board.PlayerCowCount(ImLookingAt.playerColour) == 3)
             {
-                var UserGave = ImLookingAt.getActionInput(Enums.RefListens.DoublePosition);
-                bool ref_test1 = checkIsvalidInputFly(UserGave.Item1, UserGave.Item2);
+                userGave = ImLookingAt.getActionInput(Enums.RefListens.DoublePosition);
+                bool ref_test1 = checkIsvalidInputFly(userGave.Item1,userGave.Item2);
                 while (ref_test1 == false)
                 {
-                    UserGave = ImLookingAt.getActionInput(Enums.RefListens.DoublePosition);
-                    ref_test1 = checkIsvalidInputFly(UserGave.Item1, UserGave.Item2);
+                    userGave = ImLookingAt.getActionInput(Enums.RefListens.DoublePosition);
+                    ref_test1 = checkIsvalidInputFly(userGave.Item1, userGave.Item2);
                 }
 
-                ImLookingAt.flyCow(game_board, UserGave.Item1, UserGave.Item2);
+                ImLookingAt.flyCow(game_board, userGave.Item1, userGave.Item2);
             }
             else // ******************************************************************************MOVE STATE
             {
-                var UserGave = ImLookingAt.getActionInput(Enums.RefListens.DoublePosition);
-                bool ref_test1 = checkIsvalidInputMove(UserGave.Item1 , UserGave.Item2);
+                userGave = ImLookingAt.getActionInput(Enums.RefListens.DoublePosition);
+
+                bool ref_test1 = checkIsvalidInputMove(userGave.Item1 , userGave.Item2);
                 while (ref_test1 == false)
                 {
-                    UserGave = ImLookingAt.getActionInput(Enums.RefListens.DoublePosition);
-                    ref_test1 = checkIsvalidInputMove(UserGave.Item1 , UserGave.Item2);
+                    userGave = ImLookingAt.getActionInput(Enums.RefListens.DoublePosition);
+                    ref_test1 = checkIsvalidInputMove(userGave.Item1 , userGave.Item2);
                 }
 
-                ImLookingAt.moveCow(game_board, UserGave.Item1, UserGave.Item2);
+                ImLookingAt.moveCow(game_board, userGave.Item1, userGave.Item2);
 
             }
 
-            // Mill check
+            //Incase of funky mill bugs, looky here
+
+            //Mill check
+            int x = userGave.Item1;
+           // if (x != -1)
+            {
+                if (isAMillFormd(userGave.Item2) == true)
+                {
+                    Console.WriteLine("Referee: A mill has been formed! Shoot an enemy cow (& a non empty spot)");
+                    int target = ImLookingAt.getActionInput(Enums.RefListens.SinglePosition).Item2;
+                    bool ref_ismill = checkIsvalidInputShoot(target);
+                    while (ref_ismill == false)
+                    {
+                        target = ImLookingAt.getActionInput(Enums.RefListens.SinglePosition).Item2;
+                        ref_ismill = checkIsvalidInputShoot(target);
+                    }
+                    Console.WriteLine("Referee: Success Shot! ");
+                    ImLookingAt.shootCow(game_board, target );
+                }
+
+            }
+
+
 
             // win check
             //Just use return; to finish the function

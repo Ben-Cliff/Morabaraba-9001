@@ -135,7 +135,7 @@ namespace Morabaraba9001
                         if (PlayBoard.PositionNames.Contains(userGives.ToLower()))
                         {
 
-                            return (PlayBoard.PositionNames.IndexOf(userGives.ToLower()), -1);
+                            return ( -1, PlayBoard.PositionNames.IndexOf(userGives.ToLower()));
 
                         }
                         else
