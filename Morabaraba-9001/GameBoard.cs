@@ -107,5 +107,44 @@ namespace Morabaraba9001
             return Positions.FindAll(d ).Count;
             
         }
+
+        private string ConvertToChar(Colour c)
+        {
+            switch (c)
+            {
+                case Colour.None: return " ";
+                case Colour.Dark: return "0";
+                case Colour.Light: return "X";
+            }
+
+            throw new Exception("That wasnt a colour.");
+        }
+
+        public void DrawBoard()
+        {
+            Console.WriteLine("\n" + // Line between turns currently
+                              "\t  \t1,2,3    4    5,6,7\n" +
+                              "\t[A]\t{0}........{1}........{2}\n" +
+                              "\t   \t|\\       |       /|\n" +
+                              "\t[B]\t| {3}......{4}......{5} |\n" +
+                              "\t   \t| |\\     |     /| |\n" +
+                              "\t[C]\t| | {6}....{7}....{8} | |\n" +
+                              "\t   \t| | |         | | |\n" +
+                              "\t[D]\t{9}.{10}.{11}         {12}.{13}.{14}\n" +
+                              "\t   \t| | |         | | | \n" +
+                              "\t[E]\t| | {15}....{16}....{17} | |\n" +
+                              "\t   \t| |/     |     \\| |\n" +
+                              "\t[F]\t| {18}......{19}......{20} |\n" +
+                              "\t   \t|/       |       \\|\n" +
+                              "\t[G]\t{21}........{22}........{23}\n\n",
+                              ConvertToChar(Positions[0]), ConvertToChar(Positions[1]), ConvertToChar(Positions[2]),
+                              ConvertToChar(Positions[8]),  ConvertToChar(Positions[9]),  ConvertToChar(Positions[10]),
+                              ConvertToChar(Positions[16]), ConvertToChar(Positions[17]), ConvertToChar(Positions[18]),
+                              ConvertToChar(Positions[7]),  ConvertToChar(Positions[15]), ConvertToChar(Positions[23]),
+                              /* second half mid line */    ConvertToChar(Positions[19]), ConvertToChar(Positions[11]), ConvertToChar(Positions[3]),
+                              ConvertToChar(Positions[22]), ConvertToChar(Positions[21]), ConvertToChar(Positions[20]),
+                              ConvertToChar(Positions[14]), ConvertToChar(Positions[13]), ConvertToChar(Positions[12]),
+                              ConvertToChar(Positions[6]),  ConvertToChar(Positions[5]),  ConvertToChar(Positions[4]));
+        }
     }
 }

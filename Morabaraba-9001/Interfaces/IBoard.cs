@@ -21,6 +21,6 @@ namespace Morabaraba9001.Interfaces
         bool AdjustBoard_Shoot(int targer, Colour player);
         int PlayerCowCount(Colour c);
 
-
+        void DrawBoard();
     }
 }
