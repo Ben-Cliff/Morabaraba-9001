@@ -416,6 +416,9 @@ namespace Morabaraba9001
 
         public bool IsAMoveAvailable()
         {
+            if (ImLookingAt.CowsInBox > 0) return true;
+
+
             for (int i = 0; i < game_board.Positions.Count; i++)
             {
                 if (game_board.Positions[i] == ImLookingAt.playerColour)

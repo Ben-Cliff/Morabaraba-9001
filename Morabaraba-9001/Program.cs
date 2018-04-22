@@ -37,7 +37,7 @@ namespace Morabaraba9001
                
             }
 
-            Console.Write("\nCongratulations on your shoot, ");
+            Console.Write("\n\tCongratulations on your game, ");
             switch (Peter.ImLookingAt.playerColour)
             {
  
