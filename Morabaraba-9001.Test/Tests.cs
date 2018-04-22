@@ -463,6 +463,32 @@ namespace Morabaraba_9001.Test
             Assert.That(!Peter.IsAMoveAvailable()); //
         }
 
+        [Test]
+        public void ShootOnlyPossibleAsMillCreatedNotAfter()
+        {
+            /*
+             * Ref only checks if a mill is created for the position you JUST placed on or moved to
+             * Never ANY others at all, our Mill tests before cover this to make sure we only accept mills currently made in mill positions
+             */
+            /*
+             * The only way our code can test this is if we artifically create a mill in the initial definition of the board. Then
+             * move cows to form a mill and note that the last move/place/fly that created this mill is used by the mill logic earlier defined.
+             * 
+             * Assert.That(true);*/
+            List<Colour> boardFilled = new List<Colour>() { Colour.Dark, Colour.Dark, Colour.Dark, Colour.Dark, Colour.None, Colour.Light, Colour.Dark, Colour.Light, Colour.Dark, Colour.Light, Colour.Dark, Colour.Light, Colour.Dark, Colour.Light, Colour.Dark, Colour.Light, Colour.Dark, Colour.Light, Colour.Dark, Colour.Light };
+
+            GameBoard gameBoard = new GameBoard(boardFilled);
+            Player Player1 = new Player(Colour.Dark, 1, gameBoard);//0 means that placing is done
+            Player Player2 = new Player(Colour.Light, 0, gameBoard);
+            Referee Peter = new Referee(gameBoard, Player1, Player2);
+
+            bool test_spot_for_mill = Peter.isAMillFormd(4);
+            Player1.placeCow(gameBoard, 4);
+            bool test_spot_for_mill_after = Peter.isAMillFormd(4);
+
+            Assert.That(test_spot_for_mill != test_spot_for_mill_after);
+        }
+
 
 
 
