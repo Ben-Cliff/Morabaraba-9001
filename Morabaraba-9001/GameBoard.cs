@@ -89,7 +89,8 @@ namespace Morabaraba9001
 
         public bool AdjustBoard_Place(int position, Colour player)
         {
-            throw new NotImplementedException();
+            Positions[position] = player;
+            return true;
         }
 
         public bool AdjustBoard_Shoot(int targer, Colour player)
