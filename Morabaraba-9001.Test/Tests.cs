@@ -72,7 +72,7 @@ namespace Morabaraba_9001.Test
         public void DarkShouldStart()
         {
             List<Colour> board = new List<Colour>() { Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None };
-            // Currently the board is empty to start, this is just since we test if it compiles and runs
+            
             GameBoard gameBoard = new GameBoard(board);
             Player Player1 = new Player(Colour.Light, 12, gameBoard);
             Player Player2 = new Player(Colour.Dark, 12, gameBoard);
@@ -86,7 +86,7 @@ namespace Morabaraba_9001.Test
         public void OnlyEmptySpots()
         {
             List<Colour> board = new List<Colour>() { Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None };
-            // Currently the board is empty to start, this is just since we test if it compiles and runs
+            
             GameBoard gameBoard = new GameBoard(board);
             Player Player1 = new Player(Colour.Light, 12, gameBoard);
             Player Player2 = new Player(Colour.Dark, 12, gameBoard);
@@ -145,40 +145,43 @@ namespace Morabaraba_9001.Test
         [Test]
         public void MillMadeOfSameHerd()
         {
-            /*
-            * //mock mill to be created
-            * //check if mill has same players
-            * 
-            * Game g = new Game();
-            * //3 in a row from 1 herd only
-            * 
-            * BoardPos b = new BoardPos();
-            * g.board.Add(BoardPos.a1, new Cow(Player.Type.Red));
-            * g.board.Add(BoardPos.a4, new Cow(Player.Type.Red));
-            * g.board.Add(BoardPos.a7, new Cow(Player.Type.Red));
-            * //3 in a row from both herds
-            * g.board.Add(BoardPos.g1, new Cow(Player.Type.Blue));
-            * g.board.Add(BoardPos.g4, new Cow(Player.Type.Red));
-            * g.board.Add(BoardPos.g7, new Cow(Player.Type.Blue));
-            * 
-            * 
-            * Assert.That(Mill.IsThereAMillFor(g, BoardPos.a1) == true);
-            * Assert.That(Mill.IsThereAMillFor(g, BoardPos.g4) == false);
-            * //fml 
-            */
-            Assert.That(false);
+            List<Colour> board = new List<Colour>() { Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None };
+            
+            GameBoard gameBoard = new GameBoard(board);
+            Player Player1 = new Player(Colour.Dark, 12, gameBoard);
+            Player Player2 = new Player(Colour.Light, 12, gameBoard);
+            Referee Peter = new Referee(gameBoard, Player1, Player2);
+
+            board[4] = Player1.playerColour;        //Placing 3 identicle cows in a row (Should form a mill)
+            board[5] = Player1.playerColour;
+            board[6] = Player1.playerColour;
+
+            board[0] = Player1.playerColour;        //Placing 3 different cows in a row (Should not form a mill)
+            board[1] = Player1.playerColour;
+            board[2] = Player2.playerColour;
+
+            board[13] = Player1.playerColour;       //Testing mills dont form around corners. ( [13] [4/6] [5] )
+
+            Assert.That(Peter.isAMillFormd(4));     
+
+            Assert.That(!Peter.isAMillFormd(0));
+
+            Assert.That(!Peter.isAMillFormd(13));
+
         }
 
         [Test]
         public void TwoPlayersExist()
         {
-            /*
-             * Game g = new Game();
-             * int test = g.Players.Count();
-             * 
-             * Assert.That(test == 2);
-             */
-            Assert.That(false);
+            List<Colour> board = new List<Colour>() { Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None };
+            
+            GameBoard gameBoard = new GameBoard(board);
+            Player Player1 = new Player(Colour.Dark, 12, gameBoard);
+            Player Player2 = new Player(Colour.Light, 12, gameBoard);
+            Referee Peter = new Referee(gameBoard, Player1, Player2);
+
+            Assert.That(Peter.player1 != null && Peter.player2 != null && Peter.player1 != Peter.player2);
+
         }
     }
 }
