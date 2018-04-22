@@ -152,19 +152,73 @@ namespace Morabaraba_9001.Test
             board[5] = Player1.playerColour;
             board[6] = Player1.playerColour;
 
+            Assert.That(Peter.isAMillFormd(4));
+           
+
+        }
+
+
+
+        [Test]
+        public void MillCheckDifferentCowsInMill()
+        {
+
+            List<Colour> board = new List<Colour>() { Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None };
+
+            GameBoard gameBoard = new GameBoard(board);
+            Player Player1 = new Player(Colour.Dark, 12, gameBoard);
+            Player Player2 = new Player(Colour.Light, 12, gameBoard);
+            Referee Peter = new Referee(gameBoard, Player1, Player2);
+
             board[0] = Player1.playerColour;        //Placing 3 different cows in a row (Should not form a mill)
             board[1] = Player1.playerColour;
             board[2] = Player2.playerColour;
 
+            Assert.That(!Peter.isAMillFormd(0));
+
+        }
+
+
+        [Test]
+        public void MillAndCorners()
+        {
+            List<Colour> board = new List<Colour>() { Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None };
+
+            GameBoard gameBoard = new GameBoard(board);
+            Player Player1 = new Player(Colour.Dark, 12, gameBoard);
+            Player Player2 = new Player(Colour.Light, 12, gameBoard);
+            Referee Peter = new Referee(gameBoard, Player1, Player2);
+
+            board[4] = Player1.playerColour;        //Placing 3 identicle cows in a row (Should form a mill)
+            board[5] = Player1.playerColour;
+            board[6] = Player1.playerColour;
+
+
+
             board[13] = Player1.playerColour;       //Testing mills dont form around corners. ( [13] [4/6] [5] )
 
-            Assert.That(Peter.isAMillFormd(4));
 
-            Assert.That(!Peter.isAMillFormd(0));
 
             Assert.That(!Peter.isAMillFormd(13));
 
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         [Test]
         public void TwoPlayersExist()
@@ -265,6 +319,51 @@ namespace Morabaraba_9001.Test
         }
 
 
+
+        [Test]
+        public void ThreeCowsMeansflystate()
+        {
+            List<Colour> board = new List<Colour>() { Colour.Dark, Colour.Dark, Colour.Light, Colour.None, Colour.Dark, Colour.None, Colour.None, Colour.Light, Colour.None, Colour.None, Colour.Light, Colour.None, Colour.Light, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None };
+
+            GameBoard gameBoard = new GameBoard(board);
+            Player Player1 = new Player(Colour.Dark, 0, gameBoard);//0 means that placing is done
+            Player Player2 = new Player(Colour.Light, 0, gameBoard);
+            Referee Peter = new Referee(gameBoard, Player1, Player2);
+
+            Player1.flyCow(gameBoard, 0, 3);
+
+            Player2.flyCow(gameBoard, 2, 23);
+
+          
+        
+
+            //dark player
+            Assert.That(board[3] == Player1.playerColour ); //fly is successful
+            Assert.That(board[23] == Colour.None); //fly cannot occur as player2 has 4 cows on baord
+        }
+
+
+        [Test]
+        public void asd()
+        {
+            List<Colour> board = new List<Colour>() { Colour.Dark, Colour.Dark, Colour.Light, Colour.None, Colour.Dark, Colour.None, Colour.None, Colour.Light, Colour.None, Colour.None, Colour.Light, Colour.None, Colour.Light, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None };
+
+            GameBoard gameBoard = new GameBoard(board);
+            Player Player1 = new Player(Colour.Dark, 0, gameBoard);//0 means that placing is done
+            Player Player2 = new Player(Colour.Light, 0, gameBoard);
+            Referee Peter = new Referee(gameBoard, Player1, Player2);
+
+            Player1.flyCow(gameBoard, 0, 3);
+
+            Player2.flyCow(gameBoard, 2, 23);
+
+
+
+
+            //dark player
+            Assert.That(board[3] == Player1.playerColour); //fly is successful
+            Assert.That(board[23] == Colour.None); //fly cannot occur as player2 has 4 cows on baord
+        }
 
 
     }
