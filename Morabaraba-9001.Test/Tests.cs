@@ -453,18 +453,14 @@ namespace Morabaraba_9001.Test
         [Test]
         public void WinOccursIfOpponentCannotMove()
         {
-            List<Colour> board = new List<Colour>() { Colour.Dark, Colour.Dark, Colour.Light, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None };
+            List<Colour> boardFilled = new List<Colour>() { Colour.Dark, Colour.Light, Colour.Dark, Colour.Light, Colour.Dark, Colour.Light, Colour.Dark, Colour.Light, Colour.Dark, Colour.Light, Colour.Dark, Colour.Light, Colour.Dark, Colour.Light, Colour.Dark, Colour.Light, Colour.Dark, Colour.Light, Colour.Dark, Colour.Light };
 
-            GameBoard gameBoard = new GameBoard(board);
+            GameBoard gameBoard = new GameBoard(boardFilled);
             Player Player1 = new Player(Colour.Dark, 0, gameBoard);//0 means that placing is done
             Player Player2 = new Player(Colour.Light, 0, gameBoard);
             Referee Peter = new Referee(gameBoard, Player1, Player2);
-
-
-
-
-            //dark player
-            Assert.That(true); //
+            
+            Assert.That(!Peter.IsAMoveAvailable()); //
         }
 
 
