@@ -344,7 +344,7 @@ namespace Morabaraba_9001.Test
 
 
         [Test]
-        public void asd()
+        public void FlyCowTest()
         {
             List<Colour> board = new List<Colour>() { Colour.Dark, Colour.Dark, Colour.Light, Colour.None, Colour.Dark, Colour.None, Colour.None, Colour.Light, Colour.None, Colour.None, Colour.Light, Colour.None, Colour.Light, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None };
 
@@ -365,6 +365,20 @@ namespace Morabaraba_9001.Test
             Assert.That(board[23] == Colour.None); //fly cannot occur as player2 has 4 cows on baord
         }
 
+        // Referee isnt editing board, verifys if input is correct (or if that option isnt allowed)
+        [Test]
+        public void ShootJustCantShootWhenThereAreMills()
+        {
+            List<Colour> board = new List<Colour>() { Colour.Dark, Colour.Dark, Colour.Dark, Colour.None, Colour.Dark, Colour.None, Colour.None, Colour.Light, Colour.None, Colour.None, Colour.Light, Colour.None, Colour.Light, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None };
+            GameBoard gameBoard = new GameBoard(board);
+            Player Player1 = new Player(Colour.Dark, 0, gameBoard);//0 means that placing is done
+            Player Player2 = new Player(Colour.Light, 0, gameBoard);
+            Referee Peter = new Referee(gameBoard, Player1, Player2);
+            Peter.ImLookingAt = Player2;
+
+            Assert.That(Peter.checkIsvalidInputShoot(0, false) == false);
+            Assert.That(Peter.checkIsvalidInputShoot(4, false) == true);
+        }
 
     }
 }
