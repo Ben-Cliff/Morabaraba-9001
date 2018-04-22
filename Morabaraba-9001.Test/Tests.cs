@@ -153,7 +153,7 @@ namespace Morabaraba_9001.Test
             board[6] = Player1.playerColour;
 
             Assert.That(Peter.isAMillFormd(4));
-           
+
 
         }
 
@@ -254,7 +254,7 @@ namespace Morabaraba_9001.Test
 
 
 
-     
+
         }
 
 
@@ -271,12 +271,12 @@ namespace Morabaraba_9001.Test
             Player Player1 = new Player(Colour.Dark, 11, gameBoard);
             Player Player2 = new Player(Colour.Light, 11, gameBoard);
             Referee Peter = new Referee(gameBoard, Player1, Player2);
-            
+
             //dark player
             Assert.That(Peter.checkIsvalidInputMove(0, 3) == false); //not adjacent
             Assert.That(Peter.checkIsvalidInputMove(0, 1) == true);
 
-          
+
 
         }
 
@@ -290,7 +290,7 @@ namespace Morabaraba_9001.Test
             Player Player1 = new Player(Colour.Dark, 11, gameBoard);
             Player Player2 = new Player(Colour.Light, 11, gameBoard);
             Referee Peter = new Referee(gameBoard, Player1, Player2);
-            Peter.ImLookingAt =  Player2;
+            Peter.ImLookingAt = Player2;
             //Light player
             Assert.That(Peter.checkIsvalidInputMove(2, 23) == false); //not adjacent
             Assert.That(Peter.checkIsvalidInputMove(2, 3) == true);
@@ -334,11 +334,11 @@ namespace Morabaraba_9001.Test
 
             Player2.flyCow(gameBoard, 2, 23);
 
-          
-        
+
+
 
             //dark player
-            Assert.That(board[3] == Player1.playerColour ); //fly is successful
+            Assert.That(board[3] == Player1.playerColour); //fly is successful
             Assert.That(board[23] == Colour.None); //fly cannot occur as player2 has 4 cows on baord
         }
 
@@ -367,7 +367,7 @@ namespace Morabaraba_9001.Test
 
         // Referee isnt editing board, verifys if input is correct (or if that option isnt allowed)
         [Test]
-        public void ShootJustCantShootWhenThereAreMills()
+        public void CantShootMillsWhenThereAreCows()
         {
             List<Colour> board = new List<Colour>() { Colour.Dark, Colour.Dark, Colour.Dark, Colour.None, Colour.Dark, Colour.None, Colour.None, Colour.Light, Colour.None, Colour.None, Colour.Light, Colour.None, Colour.Light, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None };
             GameBoard gameBoard = new GameBoard(board);
@@ -379,6 +379,37 @@ namespace Morabaraba_9001.Test
             Assert.That(Peter.checkIsvalidInputShoot(0, false) == false);
             Assert.That(Peter.checkIsvalidInputShoot(4, false) == true);
         }
+
+
+        [Test]
+        public void CanShootMillsWhenAllMills()
+        {
+
+            List<Colour> board = new List<Colour>() { Colour.Dark, Colour.Dark, Colour.Dark, Colour.None, Colour.None, Colour.None, Colour.None, Colour.Light, Colour.None, Colour.None, Colour.Light, Colour.None, Colour.Light, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None };
+            GameBoard gameBoard = new GameBoard(board);
+            Player Player1 = new Player(Colour.Dark, 0, gameBoard);//0 means that placing is done
+            Player Player2 = new Player(Colour.Light, 0, gameBoard);
+            Referee Peter = new Referee(gameBoard, Player1, Player2);
+            Peter.ImLookingAt = Player2;
+
+            Assert.That(Peter.checkIsvalidInputShoot(0, true) == true);
+
+        }
+
+        [Test]
+        public void CantShootOwnCows()
+        {
+
+            List<Colour> board = new List<Colour>() { Colour.Dark, Colour.Dark, Colour.Dark, Colour.None, Colour.None, Colour.None, Colour.None, Colour.Light, Colour.None, Colour.None, Colour.Light, Colour.None, Colour.Light, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None };
+            GameBoard gameBoard = new GameBoard(board);
+            Player Player1 = new Player(Colour.Dark, 0, gameBoard); //0 means that placing is done
+            Player Player2 = new Player(Colour.Light, 0, gameBoard);
+            Referee Peter = new Referee(gameBoard, Player1, Player2);
+            
+            Assert.That(Peter.checkIsvalidInputShoot(0, false) == false);  //Ref set to player1 by default
+
+        }
+
 
     }
 }
