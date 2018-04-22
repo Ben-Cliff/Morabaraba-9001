@@ -411,5 +411,18 @@ namespace Morabaraba_9001.Test
         }
 
 
+        [Test]
+        public void CantShootAtNothing()
+        {
+
+            List<Colour> board = new List<Colour>() { Colour.None, Colour.Dark, Colour.Dark, Colour.None, Colour.None, Colour.None, Colour.None, Colour.Light, Colour.None, Colour.None, Colour.Light, Colour.None, Colour.Light, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None };
+            GameBoard gameBoard = new GameBoard(board);
+            Player Player1 = new Player(Colour.Dark, 0, gameBoard); //0 means that placing is done
+            Player Player2 = new Player(Colour.Light, 0, gameBoard);
+            Referee Peter = new Referee(gameBoard, Player1, Player2);
+
+            Assert.That(Peter.checkIsvalidInputShoot(0, false) == false);  //Ref set to player1 by default
+
+        }
     }
 }
