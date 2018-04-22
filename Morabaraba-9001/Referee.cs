@@ -38,7 +38,30 @@ namespace Morabaraba9001
 
         public bool checkIsvalidInputFly(int from, int to)
         {
-            throw new NotImplementedException();
+            Console.WriteLine("Referee: Let's take a look at what you have selected");
+
+            if (game_board.Positions[from] != this.ImLookingAt.playerColour)
+            {
+                Console.WriteLine("Referee: Haibo! You have no bovine here. Try again");
+                return false;
+
+            }
+
+            Console.WriteLine("Referee: From coordinate accepted");
+
+
+
+
+            if (game_board.Positions[to] != Colour.None)
+            {
+                Console.WriteLine("Referee: Haibo! This appears to be filled. Chose a non-bovine affiliated spot to move to");
+                return false;
+
+            }
+
+
+            Console.WriteLine("Referee: 'To' coordinate accepted");
+            return true;
         }
 
         public bool checkIsvalidInputMove(int from, int to)
@@ -52,7 +75,7 @@ namespace Morabaraba9001
 
             if (game_board.Positions[from] != this.ImLookingAt.playerColour)
             {
-                Console.WriteLine("Haibo! This appears to be filled. Chose a non-bovine affiliated spot to move from");
+                Console.WriteLine("Referee: Haibo! You have no bovine here. Try again");
                 return false;
 
             }
@@ -64,7 +87,7 @@ namespace Morabaraba9001
 
             if (game_board.Positions[to] != Colour.None)
             {
-                Console.WriteLine("Haibo! This appears to be filled. Chose a non-bovine affiliated spot to move to");
+                Console.WriteLine("Referee: Haibo! This appears to be filled. Chose a non-bovine affiliated spot to move to");
                 return false;
 
             }
