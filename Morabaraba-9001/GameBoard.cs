@@ -1,4 +1,5 @@
 ﻿using Morabaraba9001.Interfaces;
+using Morabaraba9001.Enums;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -95,12 +96,16 @@ namespace Morabaraba9001
 
         public bool AdjustBoard_Shoot(int targer, Colour player)
         {
-            throw new NotImplementedException();
+            Positions[targer] = Colour.None;
+            return true;
         }
 
         public int PlayerCowCount(Colour c)
         {
-            throw new NotImplementedException();
+            Predicate<Colour> d;
+            d = delegate (Colour a) { return a == c; };
+            return Positions.FindAll(d ).Count;
+            
         }
     }
 }

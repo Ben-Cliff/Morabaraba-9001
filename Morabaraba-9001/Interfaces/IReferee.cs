@@ -1,4 +1,6 @@
 ﻿using System;
+using Morabaraba9001.Enums;
+
 namespace Morabaraba9001.Interfaces
 {
     public interface IReferee

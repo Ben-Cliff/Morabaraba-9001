@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Morabaraba9001.Enums;
 
 namespace Morabaraba9001.Interfaces
 {

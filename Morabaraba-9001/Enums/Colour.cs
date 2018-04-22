@@ -1,5 +1,5 @@
 ﻿using System;
-namespace Morabaraba9001.Interfaces
+namespace Morabaraba9001.Enums
 {
     public enum Colour
     {
