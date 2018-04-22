@@ -69,15 +69,21 @@ namespace Morabaraba_9001.Test
 
 
         [Test] //Dark player start
-        public void RedShouldStart()
+        public void DarkShouldStart()
         {
+            List<Colour> board = new List<Colour>() { Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None };
+            // Currently the board is empty to start, this is just since we test if it compiles and runs
+            GameBoard gameBoard = new GameBoard(board);
+            Player Player1 = new Player(Colour.Light, 12, gameBoard);
+            Player Player2 = new Player(Colour.Dark, 12, gameBoard);
+            Referee Peter = new Referee(gameBoard, Player1, Player2);
             /*
              * Game g = new Game();
              * var t = g.Players[0];
              *
              * Assert.That(t.MyType == Player.Type.Red);
              */
-            Assert.That(false);
+            Assert.That(Peter.WhoseTurn == Colour.Dark);
         }
 
 
