@@ -204,22 +204,6 @@ namespace Morabaraba_9001.Test
         }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         [Test]
         public void TwoPlayersExist()
         {
@@ -424,5 +408,30 @@ namespace Morabaraba_9001.Test
             Assert.That(Peter.checkIsvalidInputShoot(0, false) == false);  //Ref set to player1 by default
 
         }
+
+        [Test]
+        public void ShootingRemoveCowsFromBoard()
+        {
+            List<Colour> board = new List<Colour>() { Colour.Dark, Colour.None, Colour.Light, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None };
+
+            GameBoard gameBoard = new GameBoard(board);
+            Player Player1 = new Player(Colour.Dark, 0, gameBoard);//0 means that placing is done
+            Player Player2 = new Player(Colour.Light, 0, gameBoard);
+            Referee Peter = new Referee(gameBoard, Player1, Player2);
+
+            int countOne = gameBoard.PlayerCowCount(Player2.playerColour);
+
+            Player1.shootCow(gameBoard, 2);
+            int countTwo  = gameBoard.PlayerCowCount(Player2.playerColour);
+
+            //dark player
+            Assert.That(countOne == countTwo+1 ); //
+        }
+
+
+
+
+
+
     }
 }
