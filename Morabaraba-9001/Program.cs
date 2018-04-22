@@ -25,6 +25,7 @@ namespace Morabaraba9001
 
             while (Peter.EndGame == false)
             {
+                Peter.ShowWhosTurn();
                 gameBoard.DrawBoard();
                 Peter.playTheTurn();
                 // F12

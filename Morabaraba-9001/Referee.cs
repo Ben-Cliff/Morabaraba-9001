@@ -325,6 +325,18 @@ namespace Morabaraba9001
                 case Colour.Light: WhoseTurn = Colour.Dark; break;
             }
         }
+
+        public void ShowWhosTurn()
+        {
+            if (WhoseTurn == Colour.Dark)
+            {
+                Console.WriteLine("-----------------------------------------------------------------------------\n\tDark\n");
+            }
+            else
+            {
+                Console.WriteLine("-----------------------------------------------------------------------------\n\tLight\n");
+            }
+        }
     }
 }
 
