@@ -119,23 +119,19 @@ namespace Morabaraba_9001.Test
         [Test]
         public void TestMoveStateWhilePlacing()
         {
-            /* Game g = new Game();
-            * var players = g.Players;    //creates players when looking at players list
-            * ActionMove am = new ActionMove();
-            * bool ans = false;
-            * 
-            * try
-            * {
-            *     am.Test(g, BoardPos.b4);
-            *     ans = true;
-            * }
-            * catch (Exception)
-            * {
-            * }
-            * 
-            * Assert.That(ans == false);
-            */
-            Assert.That(false);
+            List<Colour> board = new List<Colour>() { Colour.Dark, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None };
+
+            GameBoard gameBoard = new GameBoard(board);
+            Player Player1 = new Player(Colour.Dark, 11, gameBoard); //Player1 still has 11 cows to place
+            Player Player2 = new Player(Colour.Light, 12, gameBoard);
+            Referee Peter = new Referee(gameBoard, Player1, Player2);
+
+            
+            Player1.moveCow(gameBoard, 0, 1);
+            Player1.placeCow(gameBoard, 2);
+            Assert.That(gameBoard.Positions[0] == Colour.Dark && gameBoard.Positions[1] == Colour.None);    //Asserts that the cow has moved to the new position
+            Assert.That(gameBoard.Positions[2] == Colour.Dark);        //Asserts that the player is still infact placing
+          
         }
 
 
