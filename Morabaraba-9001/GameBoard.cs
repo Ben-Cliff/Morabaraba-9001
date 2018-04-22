@@ -42,22 +42,6 @@ namespace Morabaraba9001
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
             // Create the mills this board uses
             // Note: should we also input it like the board's current state for testing? Since technically we never change mills.
             Mills = new List<List<int>>();
