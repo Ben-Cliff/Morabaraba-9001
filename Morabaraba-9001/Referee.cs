@@ -205,7 +205,15 @@ namespace Morabaraba9001
 
             else if (game_board.PlayerCowCount(ImLookingAt.playerColour) == 3)
             {
-                throw new Exception("Fly move not implemented yet.");
+                var UserGave = ImLookingAt.getActionInput(Enums.RefListens.DoublePosition);
+                bool ref_test1 = checkIsvalidInputFly(UserGave.Item1, UserGave.Item2);
+                while (ref_test1 == false)
+                {
+                    UserGave = ImLookingAt.getActionInput(Enums.RefListens.DoublePosition);
+                    ref_test1 = checkIsvalidInputFly(UserGave.Item1, UserGave.Item2);
+                }
+
+                ImLookingAt.flyCow(game_board, UserGave.Item1, UserGave.Item2);
             }
             else // ******************************************************************************MOVE STATE
             {
