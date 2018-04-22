@@ -18,6 +18,35 @@ namespace Morabaraba9001
 
         public bool EndGame { get; private set; }
 
+        //creating one away list
+        //PositionNames = list of all inputs 1 (a1) - 23 (d3)
+        private List<List<int>> OneAway = new List<List<int>> {
+               new List<int>{1,8,7}, //a1
+               new List<int>{0,9,2},
+               new List<int>{1,10,3},
+               new List<int>{2,11,4 },
+               new List<int>{5,12,3 },
+               new List<int>{6,13,4 },
+               new List<int>{7,14,5 },
+               new List<int>{0,15,6 },
+               new List<int>{0,9,16,15 },
+               new List<int>{1,8,10,17 },
+               new List<int>{ 9,2,18,11},
+               new List<int>{19,10,3,12 },
+               new List<int>{ 20,11,4,13},
+               new List<int>{ 14,5,21,12},
+               new List<int>{6,15,22,13 },
+               new List<int>{ 7,8,23,14},
+               new List<int>{8,23,17 },
+               new List<int>{ 16,9,18},
+               new List<int>{ 17,10,19},
+               new List<int>{18,11,20 },
+               new List<int>{19,12,21 },
+               new List<int>{22,20,13 },
+               new List<int>{ 23,21,14},
+               new List<int>{15,16,22}
+            };
+
         public Referee(IBoard board, IPlayer firstPlayer, IPlayer secondPlayer)
         {
             game_board = board;
@@ -100,34 +129,7 @@ namespace Morabaraba9001
 
 
 
-            //creating one away list
-            //PositionNames = list of all inputs 1 (a1) - 23 (d3)
-            List<List<int>> OneAway = new List<List<int>> {
-               new List<int>{1,8,7}, //a1
-               new List<int>{0,9,2}, 
-               new List<int>{1,10,3},
-               new List<int>{2,11,4 },
-               new List<int>{5,12,3 },
-               new List<int>{6,13,4 },
-               new List<int>{7,14,5 },
-               new List<int>{0,15,6 },
-               new List<int>{0,9,16,15 },
-               new List<int>{1,8,10,17 },
-               new List<int>{ 9,2,18,11},
-               new List<int>{19,10,3,12 },
-               new List<int>{ 20,11,4,13}, 
-               new List<int>{ 14,5,21,12},
-               new List<int>{6,15,22,13 },
-               new List<int>{ 7,8,23,14},
-               new List<int>{8,23,17 },
-               new List<int>{ 16,9,18},
-               new List<int>{ 17,10,19},
-               new List<int>{18,11,20 },
-               new List<int>{19,12,21 },
-               new List<int>{22,20,13 },
-               new List<int>{ 23,21,14},
-               new List<int>{15,16,22}
-            };
+            
 
             List<int> FineTuned = OneAway[from];
             if (FineTuned.Contains(to) == false )
@@ -227,6 +229,17 @@ namespace Morabaraba9001
             }
 
             //Check player can acutally move
+            if (!IsAMoveAvailable())
+            {
+                Console.WriteLine("Referee: you cant move, you lose. Sorry");
+                EndGame = true;
+                switch (WhoseTurn)
+                {
+                    case Colour.Dark: WhoseTurn = Colour.Light; break;
+                    case Colour.Light: WhoseTurn = Colour.Dark; break;
+                }
+                return;
+            }
 
             (int, int) userGave = (-1, -1);
 
@@ -392,6 +405,7 @@ namespace Morabaraba9001
                         EndGame = true;
                         return;                                                                             //************************************ GAME ENDS HERE;
                     }
+
                 }
             }
 
@@ -400,10 +414,26 @@ namespace Morabaraba9001
 
         }
 
+        public bool IsAMoveAvailable()
+        {
+            for (int i = 0; i < game_board.Positions.Count; i++)
+            {
+                if (game_board.Positions[i] == ImLookingAt.playerColour)
+                {
+                    var this_one = OneAway[i];
+                    for (int j = 0; j < this_one.Count; j++)
+                    {
+                        if (game_board.Positions[this_one[j]] == Colour.None)
+                        {
+                            return true;
+                        }
+                    }
+                }
+            }
 
 
-
-
+            return false;
+        }
     }
 
 

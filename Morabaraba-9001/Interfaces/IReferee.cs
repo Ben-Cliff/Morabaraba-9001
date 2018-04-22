@@ -16,13 +16,14 @@ namespace Morabaraba9001.Interfaces
         bool checkIsvalidInputMove(int from, int to);
         bool checkIsvalidInputFly(int from, int to);
         bool checkIsvalidInputShoot(int target, bool millsAllowed);
-
-        void ShowWhosTurn();
         bool isAMillFormd(int to);
 
+        bool IsAMoveAvailable(); 
 
+        void ShowWhosTurn();
         void playTheTurn(); //Responisble for tunrover code + swop players
         void CheckEndGame();
+         
 
     }
 }
