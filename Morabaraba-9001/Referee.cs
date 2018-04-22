@@ -159,6 +159,12 @@ namespace Morabaraba9001
                 return false;
             }
 
+            if (isAMillFormd(target))
+            {
+                Console.WriteLine("Referee: Error, that is a mill, please select another pos.");
+                return false;
+            }
+
             return true;
         }
 
@@ -232,9 +238,6 @@ namespace Morabaraba9001
                 
                 ImLookingAt.placeCow(game_board, userGave.Item2);
             }
-
-
-
             else if (game_board.PlayerCowCount(ImLookingAt.playerColour) == 3) // ******************************************************************************FLY STATE
             {
                 Console.WriteLine("Referee: You have " + game_board.PlayerCowCount(WhoseTurn).ToString() + " cows left on el board");
@@ -264,7 +267,35 @@ namespace Morabaraba9001
             }
 
             
-                if (isAMillFormd(userGave.Item2) == true)
+            if (isAMillFormd(userGave.Item2) == true)
+            {
+                bool millShootCheck = false;
+                Colour whatWeLookAt = Colour.None;
+                if (ImLookingAt.playerColour == Colour.Dark)
+                {
+                    whatWeLookAt = Colour.Light;
+                }
+                else
+                {
+                    whatWeLookAt = Colour.Dark;
+                }
+                for (int i = 0; i < game_board.Positions.Count; i++)
+                {
+                    if (game_board.Positions[i] == whatWeLookAt)
+                    {
+                        if (!isAMillFormd(i))
+                        {
+                            Console.WriteLine("Referee: You can shoot - " + game_board.PositionNames[i]);
+                            millShootCheck = true;
+                        }
+                    }
+                }
+
+                if (millShootCheck == false)
+                {
+                    Console.WriteLine("Ref: Sorry buddy, but all the enemy cows are in mills.");
+                }
+                else
                 {
                     Console.WriteLine("Referee: A mill has been formed! Shoot an enemy cow (& a non empty spot)");
                     int target = ImLookingAt.getActionInput(Enums.RefListens.SinglePosition).Item2;
@@ -275,8 +306,10 @@ namespace Morabaraba9001
                         ref_ismill = checkIsvalidInputShoot(target);
                     }
                     Console.WriteLine("Referee: Success Shot! ");
-                    ImLookingAt.shootCow(game_board, target );
+                    ImLookingAt.shootCow(game_board, target);
                 }
+                
+            }
 
             
 

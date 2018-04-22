@@ -28,15 +28,21 @@ namespace Morabaraba9001
 
         public void flyCow(IBoard board, int from, int to)
         {
-            board.AdjustBoard_Fly(from, to, this.playerColour);
-            Console.WriteLine("Player's Cow Flown");
+            if ((CowsInBox == 0) && (board.PlayerCowCount(this.playerColour) == 3))
+            {
+                board.AdjustBoard_Fly(from, to, this.playerColour);
+                Console.WriteLine("Player's Cow Flown");
+            }
         }
 
 
         public void moveCow(IBoard board, int from, int to)
         {
-            board.AdjustBoard_Move(from, to, this.playerColour);
-            Console.WriteLine("Player's Cow Moved");
+            if (CowsInBox == 0)
+            {
+                board.AdjustBoard_Move(from, to, this.playerColour);
+                Console.WriteLine("Player's Cow Moved");
+            }
         }
 
         public void placeCow(IBoard board, int to)

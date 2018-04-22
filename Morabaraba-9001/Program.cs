@@ -17,8 +17,8 @@ namespace Morabaraba9001
             List<Colour> board = new List<Colour>() { Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None };
             // Currently the board is empty to start, this is just since we test if it compiles and runs
             GameBoard gameBoard = new GameBoard(board);
-            Player Player1 = new Player(Colour.Dark, 12, gameBoard);
-            Player Player2 = new Player(Colour.Light, 12, gameBoard);
+            Player Player1 = new Player(Colour.Dark, 4, gameBoard);
+            Player Player2 = new Player(Colour.Light, 4, gameBoard);
             Referee Peter = new Referee(gameBoard, Player1, Player2);
             Console.WriteLine("Welcome to Morabarab C# OOPS \n Have faith in the referee that he will have a just <3");
          
