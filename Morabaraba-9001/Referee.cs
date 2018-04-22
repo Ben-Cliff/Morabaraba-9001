@@ -20,7 +20,7 @@ namespace Morabaraba9001
         public Referee(IBoard board, IPlayer firstPlayer, IPlayer secondPlayer)
         {
             game_board = board;
-            if (player1.playerColour == Colour.Light)
+            if (firstPlayer.playerColour == Colour.Light)
             {
                 Console.WriteLine("Referee: Sorry light player, you cant be first.");
                 player2 = firstPlayer;
