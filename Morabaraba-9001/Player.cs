@@ -67,6 +67,10 @@ namespace Morabaraba9001
                             inputOne = true;
 
                         }
+                        else
+                        {
+                            Console.WriteLine("Player: Sorry that isnt a board positions, try again");
+                        }
 
                     }
                     catch
@@ -89,6 +93,10 @@ namespace Morabaraba9001
                             return (numeroUno, PlayBoard.PositionNames.IndexOf(userGives.ToLower()));
 
 
+                        }
+                        else
+                        {
+                            Console.WriteLine("Player: Sorry that isnt a board positions, try again");
                         }
 
                     }
@@ -126,7 +134,10 @@ namespace Morabaraba9001
                             return (PlayBoard.PositionNames.IndexOf(userGives.ToLower()), -1);
 
                         }
-
+                        else
+                        {
+                            Console.WriteLine("Player: Sorry that isnt a board positions, try again");
+                        }
 
 
                     }

@@ -47,7 +47,13 @@ namespace Morabaraba9001
 
         public bool checkIsvalidInputPlace(int to)
         {
-            throw new NotImplementedException();
+            if (game_board.Positions[to] != Colour.None)
+            {
+                Console.WriteLine("Referee: Sorry buddy, that option isnt available.");
+                 return false;
+            }
+            Console.WriteLine("Referee: nice option there, you can do the placement there.");
+            return true;
         }
 
         public bool checkIsvalidInputShoot(int from, int to)
@@ -106,23 +112,13 @@ namespace Morabaraba9001
             {
                 Console.WriteLine("Referee: you still have cows in your box, so you are going to place one in an open spot on the board, where shall that be?");
                 var userGave = ImLookingAt.getActionInput(Enums.RefListens.SinglePosition);
-                bool ref_test1 = false;
-                if (game_board.Positions[userGave.Item1] != Colour.None)
+                bool ref_test1 = checkIsvalidInputPlace(userGave.Item1);
+                while (ref_test1 == false)
                 {
-                    ref_test1 = true;
-                }
-
-                while (ref_test1)
-                {
-                    Console.WriteLine("Referee: Erm... No, it has to be empty please, pick another spot!");
                     userGave = ImLookingAt.getActionInput(Enums.RefListens.SinglePosition);
-                    if (game_board.Positions[userGave.Item1] == Colour.None)
-                    {
-                        ref_test1 = false;
-                    }
+                    ref_test1 = checkIsvalidInputPlace(userGave.Item1);
                 }
-
-                Console.WriteLine("Referee: I have accepted that, you can take a cow from your box and put it on the game board, go, go");
+                
                 ImLookingAt.placeCow(game_board, userGave.Item1);
             }
             else if (game_board.PlayerCowCount(ImLookingAt.playerColour) == 3)

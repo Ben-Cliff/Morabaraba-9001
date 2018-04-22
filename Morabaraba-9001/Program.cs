@@ -13,7 +13,7 @@ namespace Morabaraba9001
             //  -> you will need to add references like for GameBoard these were added:
             //       using Morabaraba9001.Interfaces;
             //       using System.Collections.Generic;
-            List<Colour> board = new List<Colour>();
+            List<Colour> board = new List<Colour>() { Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None };
             // Currently the board is empty to start, this is just since we test if it compiles and runs
             GameBoard gameBoard = new GameBoard(board);
             Player Player1 = new Player(Colour.Dark, 12, gameBoard);
