@@ -82,7 +82,9 @@ namespace Morabaraba9001
 
         public bool AdjustBoard_Move(int positionFrom, int positionTo, Colour player)
         {
-            throw new NotImplementedException();
+            Positions[positionFrom] = Colour.None;
+            Positions[positionTo] = player;
+            return true;
         }
 
         public bool AdjustBoard_Place(int position, Colour player)
