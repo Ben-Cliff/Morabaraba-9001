@@ -77,12 +77,7 @@ namespace Morabaraba_9001.Test
             Player Player1 = new Player(Colour.Light, 12, gameBoard);
             Player Player2 = new Player(Colour.Dark, 12, gameBoard);
             Referee Peter = new Referee(gameBoard, Player1, Player2);
-            /*
-             * Game g = new Game();
-             * var t = g.Players[0];
-             *
-             * Assert.That(t.MyType == Player.Type.Red);
-             */
+
             Assert.That(Peter.WhoseTurn == Colour.Dark);
         }
 
@@ -90,26 +85,14 @@ namespace Morabaraba_9001.Test
         [Test]
         public void OnlyEmptySpots()
         {
-            /*
-            * bool somethin = false;
-            * try
-            * {
-            *     Game g = new Game();
-            *     g.board.Add(BoardPos.a1, new Cow(Player.Type.Red));
-            *     g.board.Add(BoardPos.c3, new Cow(Player.Type.Blue));
-            *     var action = new ActionPlace();
-            *     action.Test(g, BoardPos.a4);
-            *     somethin = true;
-            * }
-            * 
-            * catch (Exception ex)
-            * {
-            *     somethin = false;
-            * }
-            * 
-            * Assert.That(true == somethin);
-            */
-            Assert.That(false);
+            List<Colour> board = new List<Colour>() { Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None };
+            // Currently the board is empty to start, this is just since we test if it compiles and runs
+            GameBoard gameBoard = new GameBoard(board);
+            Player Player1 = new Player(Colour.Light, 12, gameBoard);
+            Player Player2 = new Player(Colour.Dark, 12, gameBoard);
+            Referee Peter = new Referee(gameBoard, Player1, Player2);
+
+            Assert.That(gameBoard.PlayerCowCount(Colour.Dark) == 0 && gameBoard.PlayerCowCount(Colour.Light) == 0 && gameBoard.PlayerCowCount(Colour.None) == 24);
         }
 
 
