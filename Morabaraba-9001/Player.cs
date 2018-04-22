@@ -41,8 +41,12 @@ namespace Morabaraba9001
 
         public void placeCow(IBoard board, int to)
         {
-            board.AdjustBoard_Place(to, this.playerColour);
-            Console.WriteLine("Player's Cow was placed");
+            if (CowsInBox > 0)
+            {
+                board.AdjustBoard_Place(to, this.playerColour);
+                Console.WriteLine("Player's Cow was placed");
+                CowsInBox -= 1;
+            }
         }
 
         public void shootCow(IBoard board, int target)
