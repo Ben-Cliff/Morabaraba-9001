@@ -266,11 +266,11 @@ namespace Morabaraba9001
 
             }
 
-            
+            Colour whatWeLookAt = Colour.None;
             if (isAMillFormd(userGave.Item2) == true)
             {
                 bool millShootCheck = false;
-                Colour whatWeLookAt = Colour.None;
+               
                 if (ImLookingAt.playerColour == Colour.Dark)
                 {
                     whatWeLookAt = Colour.Light;
@@ -311,12 +311,47 @@ namespace Morabaraba9001
                 
             }
 
-            
-
-
-
             // win check
             //Just use return; to finish the function
+            whatWeLookAt = Colour.None;
+            if (ImLookingAt.playerColour == Colour.Dark)
+            {
+                whatWeLookAt = Colour.Light;
+            }
+            else
+            {
+                whatWeLookAt = Colour.Dark;
+            }
+            if (game_board.PlayerCowCount(whatWeLookAt) == 2) //only two cows on board
+            {
+                if (whatWeLookAt == Colour.Dark)
+                {
+                    if (player1.CowsInBox == 0) //everything has been placed
+                    {
+
+                        //light wins
+                        EndGame = true;
+                        return;                                                                             //************************************ GAME ENDS HERE
+                    }
+
+                }
+
+                else
+                {
+                    if (player2.CowsInBox == 0) //everything has been placed
+                    {
+                        //Dark wins
+                        EndGame = true;
+                        return;                                                                             //************************************ GAME ENDS HERE;
+                    }
+                }
+            }
+
+
+
+
+
+
 
             Console.WriteLine("Referee: Neat, well done. You completed your turn");
             switch (WhoseTurn)
