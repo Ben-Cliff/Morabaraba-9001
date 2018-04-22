@@ -152,7 +152,7 @@ namespace Morabaraba9001
             return true;
         }
 
-        public bool checkIsvalidInputShoot( int target)
+        public bool checkIsvalidInputShoot( int target, bool millsAllowed)
         {
             if(game_board.Positions[target] == this.ImLookingAt.playerColour || game_board.Positions[target] == Colour.None)
             {
@@ -160,11 +160,16 @@ namespace Morabaraba9001
                 return false;
             }
 
-            if (isAMillFormd(target))
+
+            if (!millsAllowed)
             {
-                Console.WriteLine("Referee: Error, that is a mill, please select another pos.");
-                return false;
+                if (isAMillFormd(target))
+                {
+                    Console.WriteLine("Referee: Error, that is a mill, please select another pos.");
+                    return false;
+                }
             }
+            
 
             return true;
         }
@@ -294,17 +299,26 @@ namespace Morabaraba9001
 
                 if (millShootCheck == false)
                 {
-                    Console.WriteLine("Ref: Sorry buddy, but all the enemy cows are in mills.");
+                    Console.WriteLine("Referee: A mill was formed, but the enemy's cows were all in mills, you CAN shoot a mill.");
+                    int target = ImLookingAt.getActionInput(Enums.RefListens.SinglePosition).Item2;
+                    bool ref_ismill = checkIsvalidInputShoot(target, true);
+                    while (ref_ismill == false)
+                    {
+                        target = ImLookingAt.getActionInput(Enums.RefListens.SinglePosition).Item2;
+                        ref_ismill = checkIsvalidInputShoot(target, true);
+                    }
+                    Console.WriteLine("Referee: Success Shot! ");
+                    ImLookingAt.shootCow(game_board, target);
                 }
                 else
                 {
                     Console.WriteLine("Referee: A mill has been formed! Shoot an enemy cow (& a non empty spot)");
                     int target = ImLookingAt.getActionInput(Enums.RefListens.SinglePosition).Item2;
-                    bool ref_ismill = checkIsvalidInputShoot(target);
+                    bool ref_ismill = checkIsvalidInputShoot(target, false);
                     while (ref_ismill == false)
                     {
                         target = ImLookingAt.getActionInput(Enums.RefListens.SinglePosition).Item2;
-                        ref_ismill = checkIsvalidInputShoot(target);
+                        ref_ismill = checkIsvalidInputShoot(target, false);
                     }
                     Console.WriteLine("Referee: Success Shot! ");
                     ImLookingAt.shootCow(game_board, target);

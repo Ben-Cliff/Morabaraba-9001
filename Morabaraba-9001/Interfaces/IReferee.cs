@@ -15,7 +15,7 @@ namespace Morabaraba9001.Interfaces
         bool checkIsvalidInputPlace(int to);
         bool checkIsvalidInputMove(int from, int to);
         bool checkIsvalidInputFly(int from, int to);
-        bool checkIsvalidInputShoot(int target);
+        bool checkIsvalidInputShoot(int target, bool millsAllowed);
 
         void ShowWhosTurn();
         bool isAMillFormd(int to);
