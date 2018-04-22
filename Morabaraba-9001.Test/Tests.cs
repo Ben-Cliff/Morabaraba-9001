@@ -2,6 +2,7 @@
 using Morabaraba9001.Interfaces;
 using NUnit.Framework;
 using System.Collections.Generic;
+using Morabaraba9001.Enums;
 
 namespace Morabaraba_9001.Test
 {
