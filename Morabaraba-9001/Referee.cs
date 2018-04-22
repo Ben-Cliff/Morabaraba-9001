@@ -328,7 +328,40 @@ namespace Morabaraba9001
 
             // win check
             //Just use return; to finish the function
-            whatWeLookAt = Colour.None;
+
+            CheckEndGame();
+
+
+
+
+
+
+            Console.WriteLine("Referee: Neat, well done. You completed your turn");
+            switch (WhoseTurn)
+            {
+                case Colour.Dark: WhoseTurn = Colour.Light; break;
+                case Colour.Light: WhoseTurn = Colour.Dark; break;
+            }
+        }
+
+        public void ShowWhosTurn()
+        {
+            if (WhoseTurn == Colour.Dark)
+            {
+                Console.WriteLine("-----------------------------------------------------------------------------\n\tDark\n");
+            }
+            else
+            {
+                Console.WriteLine("-----------------------------------------------------------------------------\n\tLight\n");
+            }
+        }
+
+        public void CheckEndGame()
+        {
+
+
+
+            Colour whatWeLookAt = Colour.None;
             if (ImLookingAt.playerColour == Colour.Dark)
             {
                 whatWeLookAt = Colour.Light;
@@ -365,28 +398,15 @@ namespace Morabaraba9001
 
 
 
-
-
-
-            Console.WriteLine("Referee: Neat, well done. You completed your turn");
-            switch (WhoseTurn)
-            {
-                case Colour.Dark: WhoseTurn = Colour.Light; break;
-                case Colour.Light: WhoseTurn = Colour.Dark; break;
-            }
         }
 
-        public void ShowWhosTurn()
-        {
-            if (WhoseTurn == Colour.Dark)
-            {
-                Console.WriteLine("-----------------------------------------------------------------------------\n\tDark\n");
-            }
-            else
-            {
-                Console.WriteLine("-----------------------------------------------------------------------------\n\tLight\n");
-            }
-        }
+
+
+
+
     }
+
+
+
 }
 

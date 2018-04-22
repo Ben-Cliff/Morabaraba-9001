@@ -22,6 +22,7 @@ namespace Morabaraba9001.Interfaces
 
 
         void playTheTurn(); //Responisble for tunrover code + swop players
+        void CheckEndGame();
 
     }
 }
