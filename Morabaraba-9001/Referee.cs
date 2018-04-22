@@ -165,12 +165,7 @@ namespace Morabaraba9001
         public bool isAMillFormd(int to)
         {
             // First find all mills containing "to"
-            foreach(var a in game_board.Mills)
-            {
-                Console.WriteLine(Convert.ToString(a.Count));
-
-
-            }
+           
             List<List<int>> final_checks = new List<List<int>>();
 
             for (int i = 0; i < game_board.Mills.Count; i++)
@@ -180,26 +175,12 @@ namespace Morabaraba9001
                 {
                     if (a == to)
                     {
-                        Console.WriteLine(game_board.Mills[i].Count.ToString() + " jsdf908jh04wtrwsf");
+                       
                         final_checks.Add(game_board.Mills[i]);
                     }
 
                 }
             }
-
-
-
-
-            //foreach (var m in game_board.Mills)
-            //{
-            //    if (m.Contains(to))
-            //    {
-            //        final_checks.Add(m);
-            //    }
-            //}
-            //
-            // Go through final_checks for that point
-
 
             for (int i = 0; i < final_checks.Count; i++)
             {
@@ -213,20 +194,7 @@ namespace Morabaraba9001
                 }
             }
 
-            //
-            //while (!(final_checks.Count == 0))
-            //{
-            //    var this_check = final_checks[0];
-            //    this_check.RemoveAt(0);
-            //    if ((game_board.Positions[to] == game_board.Positions[this_check[0]]) &&
-            //        (game_board.Positions[to] == game_board.Positions[this_check[1]]) &&
-            //        (game_board.Positions[to] == game_board.Positions[this_check[2]]))
-            //        {
-            //            return true;
-            //        }
-            //
-            //}
-            //
+   
             return false;
         }
 
@@ -251,11 +219,11 @@ namespace Morabaraba9001
             (int, int) userGave = (-1, -1);
 
             Console.WriteLine("Referee: Cool, so lets see what you can do...");
-            if (ImLookingAt.CowsInBox > 0)
+            if (ImLookingAt.CowsInBox > 0)                   // ******************************************************************************PLACE STATE                          
             {
-                Console.WriteLine("Referee: you still have cows in your box, so you are going to place one in an open spot on the board, where shall that be?");
+                Console.WriteLine("Referee: you still have cows in your box, so you are going to place one in an open spot on the board, where shall that be? " + "Your box has: " + ImLookingAt.CowsInBox.ToString() + " cows");
                 userGave = ImLookingAt.getActionInput(Enums.RefListens.SinglePosition);
-                bool ref_test1 = checkIsvalidInputPlace(userGave.Item2); //**************************************************************************
+                bool ref_test1 = checkIsvalidInputPlace(userGave.Item2);
                 while (ref_test1 == false)
                 {
                     userGave = ImLookingAt.getActionInput(Enums.RefListens.SinglePosition);
@@ -267,8 +235,9 @@ namespace Morabaraba9001
 
 
 
-            else if (game_board.PlayerCowCount(ImLookingAt.playerColour) == 3)
+            else if (game_board.PlayerCowCount(ImLookingAt.playerColour) == 3) // ******************************************************************************FLY STATE
             {
+                Console.WriteLine("Referee: You have " + game_board.PlayerCowCount(WhoseTurn).ToString() + " cows left on el board");
                 userGave = ImLookingAt.getActionInput(Enums.RefListens.DoublePosition);
                 bool ref_test1 = checkIsvalidInputFly(userGave.Item1,userGave.Item2);
                 while (ref_test1 == false)
@@ -279,7 +248,7 @@ namespace Morabaraba9001
 
                 ImLookingAt.flyCow(game_board, userGave.Item1, userGave.Item2);
             }
-            else // ******************************************************************************MOVE STATE
+            else                                                                // ******************************************************************************MOVE STATE
             {
                 userGave = ImLookingAt.getActionInput(Enums.RefListens.DoublePosition);
 
@@ -294,12 +263,7 @@ namespace Morabaraba9001
 
             }
 
-            //Incase of funky mill bugs, looky here
-
-            //Mill check
-            int x = userGave.Item1;
-           // if (x != -1)
-            {
+            
                 if (isAMillFormd(userGave.Item2) == true)
                 {
                     Console.WriteLine("Referee: A mill has been formed! Shoot an enemy cow (& a non empty spot)");
@@ -314,7 +278,7 @@ namespace Morabaraba9001
                     ImLookingAt.shootCow(game_board, target );
                 }
 
-            }
+            
 
 
 
