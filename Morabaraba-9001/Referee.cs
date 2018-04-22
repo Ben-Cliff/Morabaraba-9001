@@ -33,6 +33,7 @@ namespace Morabaraba9001
                 player2 = secondPlayer;
             }
 
+            ImLookingAt = player1;
             WhoseTurn = Colour.Dark;
         }
 
@@ -204,7 +205,7 @@ namespace Morabaraba9001
             return false;
         }
 
-        public IPlayer ImLookingAt { get; private set; }
+        public IPlayer ImLookingAt { get; set; }
         public void playTheTurn()
         {
              //IPlayer ImLookingAt

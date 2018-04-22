@@ -204,28 +204,66 @@ namespace Morabaraba_9001.Test
         }
 
 
+        //------------------------------------------------------------------------------------------------------------------------------------------------------------------
+        //During Moving
+
 
         [Test]
-        public void B()
+        public void MoveAdjacentDark()
         {
+            List<Colour> board = new List<Colour>() { Colour.Dark, Colour.None, Colour.Light, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None };
 
+            GameBoard gameBoard = new GameBoard(board);
+            Player Player1 = new Player(Colour.Dark, 11, gameBoard);
+            Player Player2 = new Player(Colour.Light, 11, gameBoard);
+            Referee Peter = new Referee(gameBoard, Player1, Player2);
+            
+            //dark player
+            Assert.That(Peter.checkIsvalidInputMove(0, 3) == false); //not adjacent
+            Assert.That(Peter.checkIsvalidInputMove(0, 1) == true);
 
+          
 
-
-
-            Assert.That(true);
         }
+
 
         [Test]
-        public void c()
+        public void MoveAdjacentLight()
         {
+            List<Colour> board = new List<Colour>() { Colour.Dark, Colour.None, Colour.Light, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None };
+
+            GameBoard gameBoard = new GameBoard(board);
+            Player Player1 = new Player(Colour.Dark, 11, gameBoard);
+            Player Player2 = new Player(Colour.Light, 11, gameBoard);
+            Referee Peter = new Referee(gameBoard, Player1, Player2);
+            Peter.ImLookingAt =  Player2;
+            //Light player
+            Assert.That(Peter.checkIsvalidInputMove(2, 23) == false); //not adjacent
+            Assert.That(Peter.checkIsvalidInputMove(2, 3) == true);
 
 
-
-
-
-            Assert.That(true);
         }
+
+
+
+
+        [Test]
+        public void MovingDoesNotChangeNumberOfCows()
+        {
+            List<Colour> board = new List<Colour>() { Colour.Dark, Colour.None, Colour.Light, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None };
+
+            GameBoard gameBoard = new GameBoard(board);
+            Player Player1 = new Player(Colour.Dark, 0, gameBoard);//0 means that placing is done
+            Player Player2 = new Player(Colour.Light, 0, gameBoard);
+            Referee Peter = new Referee(gameBoard, Player1, Player2);
+            int countOne = gameBoard.PlayerCowCount(Player1.playerColour);
+            Player1.moveCow(gameBoard, 0, 1);
+            int countTwo = gameBoard.PlayerCowCount(Player1.playerColour);
+
+            //dark player
+            Assert.That(countOne == countTwo); //
+        }
+
 
 
 
