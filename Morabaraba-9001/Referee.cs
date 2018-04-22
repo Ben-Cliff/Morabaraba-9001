@@ -128,9 +128,15 @@ namespace Morabaraba9001
             return true;
         }
 
-        public bool checkIsvalidInputShoot(int from, int to)
+        public bool checkIsvalidInputShoot( int target)
         {
-            throw new NotImplementedException();
+            if(game_board.Positions[target] == this.ImLookingAt.playerColour || game_board.Positions[target] == Colour.None)
+            {
+                Console.WriteLine("Referee: Error, you cannot shoot an unfilled position or an ally cow. ");
+                return false;
+            }
+
+            return true;
         }
 
         public bool isAMillFormd(int to)
