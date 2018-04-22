@@ -8,7 +8,7 @@ using System.Text;
 
 namespace Morabaraba9001
 {
-    class Player : IPlayer
+    public class Player : IPlayer
     {
 
         public Colour playerColour { get; private set; }

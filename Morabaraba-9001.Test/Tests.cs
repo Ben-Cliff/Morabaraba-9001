@@ -16,15 +16,17 @@ namespace Morabaraba_9001.Test
                 -> REPEATABLE
                 ->THROUGH
          */
-        [Test]//Checking initial debug mode. 7 will be replaced with 12 and vica verca
-        public void PlayersStartAndCanPlace7Cows()
+        [Test]
+        public void PlayersStartAndCanPlace12Cows()
         {
-            /*
-             * var player1 = new Player(Player.Type.Red, 7);
-             * // Note we used 7 to test if this works in testing with a smaller herd
-             * Assert.That(player1.CowsLeftToPlace == 7);
-             */
-            Assert.That(false);
+            List<Colour> brd = new List<Colour>() { Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None, Colour.None };
+            var player1 = new Player(Colour.Dark, 12, new GameBoard(brd));
+            for (int i= 0; i<12; i++)
+            {
+                { player1.placeCow(player1.PlayBoard, i); }
+            }
+
+            Assert.That(player1.PlayBoard.PlayerCowCount(player1.playerColour) == 12);
         }
 
 
